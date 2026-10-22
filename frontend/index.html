@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Discover practical coding and technology workshops with ATHAR. Learn, build, and grow your skills."
+    >
+
+    <meta name="theme-color" content="#6F8FD6">
+
+    <title>ATHAR | Learn. Build. Leave an Impact.</title>
+
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/landing.css">
+
+    <script src="assets/js/landing.js" defer></script>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <nav class="navbar container" aria-label="Main navigation">
+            <a class="brand" href="index.html" aria-label="ATHAR home">
+                <img src="/athar/frontend/assets/images/athar_logo-removebg-preview.png" alt="logo" width="150px " height="50px">
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="navLinks"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-links" id="navLinks">
+                <a class="nav-link active" href="index.html">Home</a>
+                <a class="nav-link" href="workshops.html">Workshops</a>
+                <a class="nav-link" href="#how-it-works">How It Works</a>
+                <a class="nav-link" href="#about">About</a>
+            </div>
+
+            <div class="nav-actions">
+                <a class="login-link" href="login.html">Log in</a>
+                <a class="btn btn-primary btn-sm" href="register.html">
+                    Join ATHAR <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero-section">
+            <div class="container hero-grid">
+
+                <div class="hero-content">
+                    <span class="eyebrow">
+                        <span class="status-dot"></span>
+                        YOUR NEXT CHAPTER STARTS HERE
+                    </span>
+
+                    <h1>
+                        Learn today.<br>
+                        Build <span class="text-primary">tomorrow.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Turn curiosity into real skills. Discover hands-on
+                        coding and technology workshops designed to help you
+                        learn, create, and leave your ATHAR.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="workshops.html" class="btn btn-primary">
+                            Explore Workshops <span aria-hidden="true">→</span>
+                        </a>
+
+                        <a href="#how-it-works" class="btn btn-secondary">
+                            How It Works
+                        </a>
+                    </div>
+
+                    <div class="hero-note">
+                        <span class="hero-note-icon" aria-hidden="true">✳</span>
+                        <p>Practical learning. Real progress. Lasting impact.</p>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-image-frame">
+                        <img
+                            src="assets/images/hero-workshops.webp"
+                            alt="Learners collaborating on a coding project"
+                            onerror="this.style.display='none'"
+                        >
+
+                        <div class="image-placeholder">
+                            <span class="placeholder-icon">&lt;/&gt;</span>
+                            <span>Learn by building</span>
+                        </div>
+                    </div>
+
+                    <div class="floating-card floating-card-top">
+                        <span class="floating-icon">&lt;/&gt;</span>
+                        <div>
+                            <strong>Build real skills</strong>
+                            <span>One workshop at a time</span>
+                        </div>
+                    </div>
+
+                    <div class="floating-card floating-card-bottom">
+                        <span class="floating-icon lavender-icon">✦</span>
+                        <div>
+                            <strong>Your journey matters</strong>
+                            <span>Start where you are</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-decoration hero-decoration-one"></div>
+                    <div class="hero-decoration hero-decoration-two"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Learning areas -->
+        <section class="learning-section section-padding">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">FIND YOUR DIRECTION</span>
+                        <h2>Explore learning paths</h2>
+                    </div>
+
+                    <a href="workshops.html" class="text-link">
+                        All workshops <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+
+                <div class="learning-grid">
+                    <a class="learning-card learning-blue" href="workshops.html?category=web-development">
+                        <span class="learning-icon">&lt;/&gt;</span>
+                        <h3>Web Development</h3>
+                        <p>Build websites and interactive experiences.</p>
+                        <span class="card-arrow" aria-hidden="true">↗</span>
+                    </a>
+
+                    <a class="learning-card learning-lavender" href="workshops.html?category=python">
+                        <span class="learning-icon">Py</span>
+                        <h3>Python Programming</h3>
+                        <p>Learn programming fundamentals through practice.</p>
+                        <span class="card-arrow" aria-hidden="true">↗</span>
+                    </a>
+
+                    <a class="learning-card learning-gray" href="workshops.html?category=databases">
+                        <span class="learning-icon">{ }</span>
+                        <h3>Databases</h3>
+                        <p>Understand how applications store and manage data.</p>
+                        <span class="card-arrow" aria-hidden="true">↗</span>
+                    </a>
+
+                    <a class="learning-card learning-brown" href="workshops.html?category=cybersecurity">
+                        <span class="learning-icon">⌘</span>
+                        <h3>Cybersecurity</h3>
+                        <p>Explore security fundamentals and safer systems.</p>
+                        <span class="card-arrow" aria-hidden="true">↗</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming workshops -->
+        <section class="workshops-section section-padding" id="workshops">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">LEARN SOMETHING NEW</span>
+                        <h2>Upcoming workshops</h2>
+                        <p class="section-description">
+                            Find your next opportunity to learn, practice, and grow.
+                        </p>
+                    </div>
+
+                    <a href="workshops.html" class="btn btn-secondary">
+                        View all workshops <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+
+                <div class="workshop-grid" id="upcomingWorkshops">
+                    <article class="workshop-card">
+                        <div class="workshop-image workshop-image-blue">
+                            <span class="workshop-image-code">&lt;html&gt;</span>
+                            <span class="workshop-tag">Web Development</span>
+                        </div>
+                        <div class="workshop-body">
+                            <p class="workshop-meta">Loading workshop details...</p>
+                            <h3>Discover upcoming workshops</h3>
+                            <p>Explore practical opportunities to develop your skills.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it works -->
+        <section class="process-section section-padding" id="how-it-works">
+            <div class="container">
+                <div class="center-heading">
+                    <span class="eyebrow">YOUR LEARNING JOURNEY</span>
+                    <h2>From curious to capable</h2>
+                    <p class="section-description">
+                        Getting started with ATHAR is simple.
+                    </p>
+                </div>
+
+                <div class="process-grid">
+                    <article class="process-card">
+                        <span class="process-number">01</span>
+                        <div class="process-icon">⌕</div>
+                        <h3>Discover</h3>
+                        <p>Explore workshops that match your interests and goals.</p>
+                    </article>
+
+                    <article class="process-card">
+                        <span class="process-number">02</span>
+                        <div class="process-icon">↗</div>
+                        <h3>Register</h3>
+                        <p>Choose your workshop and reserve your place.</p>
+                    </article>
+
+                    <article class="process-card">
+                        <span class="process-number">03</span>
+                        <div class="process-icon">&lt;/&gt;</div>
+                        <h3>Build</h3>
+                        <p>Learn through practical activities and hands-on projects.</p>
+                    </article>
+
+                    <article class="process-card">
+                        <span class="process-number">04</span>
+                        <div class="process-icon">✦</div>
+                        <h3>Leave your ATHAR</h3>
+                        <p>Apply what you learn and keep moving forward.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="about-section section-padding" id="about">
+            <div class="container about-grid">
+                <div class="about-visual">
+                    <div class="about-art">
+                        <span class="about-code about-code-one">function learn() {</span>
+                        <span class="about-code about-code-two">  return growth;</span>
+                        <span class="about-code about-code-three">}</span>
+                        <span class="about-art-symbol">A.</span>
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <span class="eyebrow">THE IDEA BEHIND ATHAR</span>
+                    <h2>Every skill you gain can make a difference.</h2>
+                    <p>
+                        ATHAR connects learners with coding and technology
+                        workshops that turn knowledge into practice. We believe
+                        learning should be approachable, practical, and a step
+                        toward something greater.
+                    </p>
+
+                    <a href="about.html" class="btn btn-primary">
+                        Discover ATHAR <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to action -->
+        <section class="cta-section">
+            <div class="container cta-inner">
+                <div>
+                    <span class="eyebrow">YOUR NEXT STEP STARTS NOW</span>
+                    <h2>Ready to build something meaningful?</h2>
+                    <p>Find a workshop and start building skills that stay with you.</p>
+                </div>
+
+                <a href="workshops.html" class="btn btn-white">
+                    Find Your Workshop <span aria-hidden="true">→</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-main">
+            <div class="footer-brand">
+                <a class="brand" href="index.html">
+                    <span class="brand-mark">A</span>
+                    <span>ATHAR<span class="brand-dot">.</span></span>
+                </a>
+                <p>Learn. Build. Leave an impact.</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="workshops.html">Workshops</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="login.html">Log in</a>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>© <span id="currentYear"></span> ATHAR. All rights reserved.</p>
+            <p>Built for curious minds.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
