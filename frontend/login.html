@@ -1,48 +1,46 @@
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Log in to your ATHAR account and explore workshops.">
+
+    <meta
+        name="description"
+        content="Log in to your ATHAR account and continue your learning journey."
+    >
+
+    <meta name="theme-color" content="#6F8FD6">
+
     <title>Login | ATHAR</title>
 
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/auth.css">
+
+    <script src="assets/js/shared-layout.js" defer></script>
     <script src="assets/js/auth.js" defer></script>
 </head>
+
 <body>
 
-    <header class="site-header">
-        <nav class="navbar container">
-            <a href="index.html" class="logo">ATHAR</a>
-
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                type="button"
-                aria-label="Toggle navigation"
-                aria-expanded="false"
-            >
-                ☰
-            </button>
-
-            <div class="nav-links" id="navLinks">
-                <a href="index.html">Home</a>
-                <a href="workshops.html">Workshops</a>
-                <a href="login.html" aria-current="page">Login</a>
-                <a href="register.html" class="nav-cta">Join Us</a>
-            </div>
-        </nav>
-    </header>
+    <!-- Shared Header -->
+    <div id="sharedHeader"></div>
 
     <main class="auth-page login-page">
-        <section class="auth-card login-card" aria-labelledby="loginTitle">
+        <section
+            class="auth-card login-card"
+            aria-labelledby="loginTitle"
+        >
 
             <div class="auth-heading">
-                <span class="auth-eyebrow">WELCOME BACK TO ATHAR</span>
+                <span class="auth-eyebrow">
+                    WELCOME BACK TO ATHAR
+                </span>
+
                 <h1 id="loginTitle">Welcome Back</h1>
-                <p>Log in to continue your learning journey with us.</p>
+
+                <p>
+                    Log in to continue your learning journey with us.
+                </p>
             </div>
 
             <div
@@ -57,6 +55,7 @@
 
                 <div class="form-group">
                     <label for="email">Email Address</label>
+
                     <input
                         type="email"
                         id="email"
@@ -70,6 +69,7 @@
 
                 <div class="form-group">
                     <label for="password">Password</label>
+
                     <input
                         type="password"
                         id="password"
@@ -80,7 +80,11 @@
                     >
                 </div>
 
-                <button type="submit" class="auth-submit" id="loginButton">
+                <button
+                    type="submit"
+                    class="auth-submit"
+                    id="loginButton"
+                >
                     Log In
                 </button>
 
@@ -93,12 +97,8 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-content">
-            <a href="index.html" class="logo">ATHAR</a>
-            <p>&copy; <span id="currentYear"></span> ATHAR. All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- Shared Footer -->
+    <div id="sharedFooter"></div>
 
 </body>
 </html>

@@ -1,131 +1,149 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta
+        name="description"
+        content="Get help with ATHAR workshops, registrations, and your account."
+    >
+
+    <meta name="theme-color" content="#6F8FD6">
+
     <title>Support | ATHAR</title>
 
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/support.css">
 
+    <script src="assets/js/shared-layout.js" defer></script>
     <script src="assets/js/auth.js" defer></script>
     <script src="assets/js/support.js" defer></script>
 </head>
+
 <body>
 
-<header class="site-header">
-    <nav class="navbar">
-        <a class="brand" href="index.html" aria-label="ATHAR home">
-                <img src="/athar/frontend/assets/images/athar_logo-removebg-preview.png" alt="logo" width="150px " height="50px">
+    <!-- Shared Header -->
+    <div id="sharedHeader"></div>
+
+    <main class="support-page">
+
+        <!-- Support Hero -->
+        <section class="support-hero">
+            <p class="eyebrow">WE'RE HERE TO HELP</p>
+
+            <h1>How can we help you?</h1>
+
+            <p>
+                Find answers to common questions or get in touch
+                with the ATHAR team.
+            </p>
+
+            <a href="#contactSupport" class="support-button">
+                Contact Support
+            </a>
+        </section>
+
+        <!-- Quick Help -->
+        <section class="quick-help">
+
+            <a href="workshops.html" class="help-card">
+                <span class="help-icon" aria-hidden="true">▣</span>
+
+                <h2>Workshops</h2>
+
+                <p>
+                    Explore available workshops and registration details.
+                </p>
+
+                <span class="help-link">
+                    Browse Workshops →
+                </span>
             </a>
 
-        <div class="nav-links" id="navLinks">
-            <a href="index.html">Home</a>
-            <a href="workshops.html">Workshops</a>
-        </div>
+            <a href="my-accomplishments.html" class="help-card">
+                <span class="help-icon" aria-hidden="true">✓</span>
 
-        <div id="authActions" class="auth-actions"></div>
+                <h2>My Accomplishments</h2>
 
-        <button id="menuToggle" class="menu-toggle"
-                type="button" aria-label="Toggle navigation"
-                aria-expanded="false">
-            ☰
-        </button>
-    </nav>
-</header>
+                <p>
+                    Review your workshop history and learning progress.
+                </p>
 
-<main class="support-page">
+                <span class="help-link">
+                    View Accomplishments →
+                </span>
+            </a>
 
-    <section class="support-hero">
-        <p class="eyebrow">WE'RE HERE TO HELP</p>
-        <h1>How can we help you?</h1>
-        <p>
-            Find answers to common questions or get in touch
-            with the ATHAR team.
-        </p>
+        </section>
 
-        <a href="#contactSupport" class="support-button">
-            Contact Support
-        </a>
-    </section>
+        <!-- Frequently Asked Questions -->
+        <section class="faq-section">
+            <div class="section-heading">
+                <p class="eyebrow">HELP CENTER</p>
+                <h2>Frequently Asked Questions</h2>
+            </div>
 
-    <section class="quick-help">
-        <a href="workshops.html" class="help-card">
-            <span class="help-icon">▣</span>
-            <h2>Workshops</h2>
-            <p>Explore available workshops and registration details.</p>
-            <span class="help-link">Browse Workshops →</span>
-        </a>
+            <details class="faq-item">
+                <summary>How do I register for a workshop?</summary>
 
-        <a href="accomplishments.html" class="help-card">
-            <span class="help-icon">✓</span>
-            <h2>My Accomplishments</h2>
-            <p>Review your workshop history and learning progress.</p>
-            <span class="help-link">View Accomplishments →</span>
-        </a>
-    </section>
+                <p>
+                    Browse the available workshops, open the workshop
+                    you are interested in, and follow the registration
+                    instructions.
+                </p>
+            </details>
 
-    <section class="faq-section">
-        <div class="section-heading">
-            <p class="eyebrow">HELP CENTER</p>
-            <h2>Frequently Asked Questions</h2>
-        </div>
+            <details class="faq-item">
+                <summary>How can I view my workshop registrations?</summary>
 
-        <details class="faq-item">
-            <summary>How do I register for a workshop?</summary>
-            <p>
-                Browse the available workshops, open the workshop
-                you are interested in, and follow the registration instructions.
-            </p>
-        </details>
+                <p>
+                    Sign in to your account and open My Accomplishments
+                    to review your workshop history and learning progress.
+                </p>
+            </details>
 
-        <details class="faq-item">
-            <summary>How can I view my workshop registrations?</summary>
-            <p>
-                Sign in to your account and open My Accomplishments
-                to review your available workshop history.
-            </p>
-        </details>
+            <details class="faq-item">
+                <summary>What if I cannot log in to my account?</summary>
 
-        <details class="faq-item">
-            <summary>What if I cannot log in to my account?</summary>
-            <p>
-                Check that your email and password are correct.
-                If the problem continues, contact the ATHAR support team.
-            </p>
-        </details>
+                <p>
+                    Check that your email and password are correct.
+                    If the problem continues, contact the ATHAR support team.
+                </p>
+            </details>
 
-        <details class="faq-item">
-            <summary>How can I update my profile information?</summary>
-            <p>
-                Sign in and open your account settings to review
-                and update the profile information available to you.
-            </p>
-        </details>
-    </section>
+            <details class="faq-item">
+                <summary>How can I update my profile information?</summary>
 
-    <section class="contact-support" id="contactSupport">
-        <div>
-            <p class="eyebrow">NEED MORE HELP?</p>
-            <h2>Contact Support</h2>
-            <p>
-                Tell us about your question or issue, and our team
-                will be able to review your request.
-            </p>
-        </div>
+                <p>
+                    Sign in and open your profile page to review
+                    and update the profile information available to you.
+                </p>
+            </details>
+        </section>
 
-        <a href="contact.html" class="support-button">
-            Go to Contact Page →
-        </a>
-    </section>
+        <!-- Contact Support -->
+        <section class="contact-support" id="contactSupport">
+            <div>
+                <p class="eyebrow">NEED MORE HELP?</p>
 
-</main>
+                <h2>Contact Support</h2>
 
-<footer class="site-footer">
-    <p>© <span id="currentYear"></span> ATHAR. All rights reserved.</p>
-</footer>
+                <p>
+                    Tell us about your question or issue, and our team
+                    will be able to review your request.
+                </p>
+            </div>
+
+            <a href="contact.html" class="support-button">
+                Go to Contact Page →
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Shared Footer -->
+    <div id="sharedFooter"></div>
 
 </body>
 </html>

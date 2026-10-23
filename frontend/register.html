@@ -1,52 +1,39 @@
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Create your ATHAR account and join our workshops.">
+    <meta name="theme-color" content="#6F8FD6">
+
     <title>Create Account | ATHAR</title>
 
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/auth.css">
+
+    <!-- Shared layout -->
+    <script src="assets/js/shared-layout.js" defer></script>
+
+    <!-- Authentication and registration -->
     <script src="assets/js/auth.js" defer></script>
 </head>
+
 <body>
 
-    <header class="site-header">
-        <nav class="navbar container">
-            <a class="brand" href="index.html" aria-label="ATHAR home">
-                <img src="/athar/frontend/assets/images/athar_logo-removebg-preview.png" alt="logo" width="150px " height="50px">
-            </a>
-
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                type="button"
-                aria-label="Toggle navigation"
-                aria-expanded="false"
-            >
-                ☰
-            </button>
-
-            <div class="nav-links" id="navLinks">
-                <a href="index.html">Home</a>
-                <a href="workshops.html">Workshops</a>
-                <a href="login.html">Login</a>
-                <a href="register.html" class="nav-cta" aria-current="page">
-                    Join Us
-                </a>
-            </div>
-        </nav>
-    </header>
+    <!-- Shared header -->
+    <div id="sharedHeader"></div>
 
     <main class="auth-page">
         <section class="auth-card" aria-labelledby="registerTitle">
 
             <div class="auth-heading">
                 <span class="auth-eyebrow">WELCOME TO ATHAR</span>
+
                 <h1 id="registerTitle">Create Your Account</h1>
-                <p>Join our community and start exploring new workshops.</p>
+
+                <p>
+                    Join our community and start exploring new workshops.
+                </p>
             </div>
 
             <div
@@ -62,6 +49,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstName">First Name</label>
+
                         <input
                             type="text"
                             id="firstName"
@@ -75,6 +63,7 @@
 
                     <div class="form-group">
                         <label for="lastName">Last Name</label>
+
                         <input
                             type="text"
                             id="lastName"
@@ -89,6 +78,7 @@
 
                 <div class="form-group">
                     <label for="email">Email Address</label>
+
                     <input
                         type="email"
                         id="email"
@@ -102,6 +92,7 @@
 
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
+
                     <input
                         type="tel"
                         id="phone"
@@ -116,6 +107,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="password">Password</label>
+
                         <input
                             type="password"
                             id="password"
@@ -129,6 +121,7 @@
 
                     <div class="form-group">
                         <label for="confirmPassword">Confirm Password</label>
+
                         <input
                             type="password"
                             id="confirmPassword"
@@ -144,6 +137,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="gender">Gender</label>
+
                         <select id="gender" name="gender" required>
                             <option value="">Select gender</option>
                             <option value="male">Male</option>
@@ -152,7 +146,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="birthDate">Birth Date <span class="optional">(Optional)</span></label>
+                        <label for="birthDate">
+                            Birth Date
+                            <span class="optional">(Optional)</span>
+                        </label>
+
                         <input
                             type="date"
                             id="birthDate"
@@ -163,7 +161,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="location">Location <span class="optional">(Optional)</span></label>
+                    <label for="location">
+                        Location
+                        <span class="optional">(Optional)</span>
+                    </label>
+
                     <input
                         type="text"
                         id="location"
@@ -174,7 +176,11 @@
                     >
                 </div>
 
-                <button type="submit" class="auth-submit" id="submitButton">
+                <button
+                    type="submit"
+                    class="auth-submit"
+                    id="submitButton"
+                >
                     Create Account
                 </button>
 
@@ -187,12 +193,8 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-content">
-            <a href="index.html" class="logo">ATHAR</a>
-            <p>&copy; <span id="currentYear"></span> ATHAR. All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- Shared footer -->
+    <div id="sharedFooter"></div>
 
 </body>
 </html>

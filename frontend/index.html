@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,45 +16,15 @@
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/landing.css">
 
+    <script src="assets/js/shared-layout.js" defer></script>
+    <script src="assets/js/auth.js" defer></script>
     <script src="assets/js/landing.js" defer></script>
 </head>
 
 <body>
 
-    <header class="site-header">
-        <nav class="navbar container" aria-label="Main navigation">
-            <a class="brand" href="index.html" aria-label="ATHAR home">
-                <img src="/athar/frontend/assets/images/athar_logo-removebg-preview.png" alt="logo" width="150px " height="50px">
-            </a>
-
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                type="button"
-                aria-label="Toggle navigation"
-                aria-expanded="false"
-                aria-controls="navLinks"
-            >
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <div class="nav-links" id="navLinks">
-                <a class="nav-link active" href="index.html">Home</a>
-                <a class="nav-link" href="workshops.html">Workshops</a>
-                <a class="nav-link" href="#how-it-works">How It Works</a>
-                <a class="nav-link" href="#about">About</a>
-            </div>
-
-            <div class="nav-actions">
-                <a class="login-link" href="login.html">Log in</a>
-                <a class="btn btn-primary btn-sm" href="register.html">
-                    Join ATHAR <span aria-hidden="true">↗</span>
-                </a>
-            </div>
-        </nav>
-    </header>
+    <!-- Shared Header -->
+    <div id="sharedHeader"></div>
 
     <main>
         <!-- Hero -->
@@ -132,7 +101,7 @@
             </div>
         </section>
 
-        <!-- Learning areas -->
+        <!-- Learning Areas -->
         <section class="learning-section section-padding">
             <div class="container">
                 <div class="section-heading">
@@ -147,28 +116,40 @@
                 </div>
 
                 <div class="learning-grid">
-                    <a class="learning-card learning-blue" href="workshops.html?category=web-development">
+                    <a
+                        class="learning-card learning-blue"
+                        href="workshops.html?category=web-development"
+                    >
                         <span class="learning-icon">&lt;/&gt;</span>
                         <h3>Web Development</h3>
                         <p>Build websites and interactive experiences.</p>
                         <span class="card-arrow" aria-hidden="true">↗</span>
                     </a>
 
-                    <a class="learning-card learning-lavender" href="workshops.html?category=python">
+                    <a
+                        class="learning-card learning-lavender"
+                        href="workshops.html?category=python"
+                    >
                         <span class="learning-icon">Py</span>
                         <h3>Python Programming</h3>
                         <p>Learn programming fundamentals through practice.</p>
                         <span class="card-arrow" aria-hidden="true">↗</span>
                     </a>
 
-                    <a class="learning-card learning-gray" href="workshops.html?category=databases">
+                    <a
+                        class="learning-card learning-gray"
+                        href="workshops.html?category=databases"
+                    >
                         <span class="learning-icon">{ }</span>
                         <h3>Databases</h3>
                         <p>Understand how applications store and manage data.</p>
                         <span class="card-arrow" aria-hidden="true">↗</span>
                     </a>
 
-                    <a class="learning-card learning-brown" href="workshops.html?category=cybersecurity">
+                    <a
+                        class="learning-card learning-brown"
+                        href="workshops.html?category=cybersecurity"
+                    >
                         <span class="learning-icon">⌘</span>
                         <h3>Cybersecurity</h3>
                         <p>Explore security fundamentals and safer systems.</p>
@@ -178,7 +159,7 @@
             </div>
         </section>
 
-        <!-- Upcoming workshops -->
+        <!-- Upcoming Workshops -->
         <section class="workshops-section section-padding" id="workshops">
             <div class="container">
                 <div class="section-heading">
@@ -201,17 +182,22 @@
                             <span class="workshop-image-code">&lt;html&gt;</span>
                             <span class="workshop-tag">Web Development</span>
                         </div>
+
                         <div class="workshop-body">
-                            <p class="workshop-meta">Loading workshop details...</p>
+                            <p class="workshop-meta">
+                                Loading workshop details...
+                            </p>
                             <h3>Discover upcoming workshops</h3>
-                            <p>Explore practical opportunities to develop your skills.</p>
+                            <p>
+                                Explore practical opportunities to develop your skills.
+                            </p>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- How it works -->
+        <!-- How It Works -->
         <section class="process-section section-padding" id="how-it-works">
             <div class="container">
                 <div class="center-heading">
@@ -259,8 +245,12 @@
             <div class="container about-grid">
                 <div class="about-visual">
                     <div class="about-art">
-                        <span class="about-code about-code-one">function learn() {</span>
-                        <span class="about-code about-code-two">  return growth;</span>
+                        <span class="about-code about-code-one">
+                            function learn() {
+                        </span>
+                        <span class="about-code about-code-two">
+                            &nbsp; return growth;
+                        </span>
                         <span class="about-code about-code-three">}</span>
                         <span class="about-art-symbol">A.</span>
                     </div>
@@ -269,6 +259,7 @@
                 <div class="about-content">
                     <span class="eyebrow">THE IDEA BEHIND ATHAR</span>
                     <h2>Every skill you gain can make a difference.</h2>
+
                     <p>
                         ATHAR connects learners with coding and technology
                         workshops that turn knowledge into practice. We believe
@@ -283,13 +274,15 @@
             </div>
         </section>
 
-        <!-- Call to action -->
+        <!-- Call to Action -->
         <section class="cta-section">
             <div class="container cta-inner">
                 <div>
                     <span class="eyebrow">YOUR NEXT STEP STARTS NOW</span>
                     <h2>Ready to build something meaningful?</h2>
-                    <p>Find a workshop and start building skills that stay with you.</p>
+                    <p>
+                        Find a workshop and start building skills that stay with you.
+                    </p>
                 </div>
 
                 <a href="workshops.html" class="btn btn-white">
@@ -299,29 +292,8 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-main">
-            <div class="footer-brand">
-                <a class="brand" href="index.html">
-                    <span class="brand-mark">A</span>
-                    <span>ATHAR<span class="brand-dot">.</span></span>
-                </a>
-                <p>Learn. Build. Leave an impact.</p>
-            </div>
-
-            <div class="footer-links">
-                <a href="workshops.html">Workshops</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-                <a href="login.html">Log in</a>
-            </div>
-        </div>
-
-        <div class="container footer-bottom">
-            <p>© <span id="currentYear"></span> ATHAR. All rights reserved.</p>
-            <p>Built for curious minds.</p>
-        </div>
-    </footer>
+    <!-- Shared Footer -->
+    <div id="sharedFooter"></div>
 
 </body>
 </html>

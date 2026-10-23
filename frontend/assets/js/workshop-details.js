@@ -272,22 +272,7 @@ async function loadWorkshopDetails() {
     }
 }
 
-function setupMobileNavigation() {
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
 
-    if (!menuToggle || !navLinks) return;
-
-    menuToggle.addEventListener("click", () => {
-        const isOpen = navLinks.classList.toggle("is-open");
-
-        menuToggle.setAttribute("aria-expanded", String(isOpen));
-        menuToggle.setAttribute(
-            "aria-label",
-            isOpen ? "Close navigation" : "Open navigation"
-        );
-    });
-}
 
 async function checkLogin() {
     try {

@@ -4,37 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contact the ATHAR team for help with workshops and registrations.">
+
     <title>Contact Us | ATHAR</title>
 
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/contact.css">
+
+    <script src="assets/js/shared-layout.js" defer></script>
     <script src="assets/js/auth.js" defer></script>
     <script src="assets/js/contact.js" defer></script>
 </head>
 <body>
 
-    <header class="site-header">
-        <div class="container header-container">
-            <a class="brand" href="index.html" aria-label="ATHAR home">
-                <img src="/athar/frontend/assets/images/athar_logo-removebg-preview.png" alt="logo" width="150px " height="50px">
-            </a>
-
-            <nav class="main-nav" aria-label="Main navigation">
-                <a href="index.html">Home</a>
-                <a href="workshops.html">Workshops</a>
-                <a href="my-accomplishments.html">My Accomplishments</a>
-                <a href="about.html">About</a>
-                <a href="contact.html" class="active">Contact</a>
-                <a href="support.html">Support</a>
-            </nav>
-        </div>
-    </header>
+    <!-- Shared Header -->
+    <div id="sharedHeader"></div>
 
     <main>
         <section class="contact-hero">
             <div class="container">
                 <span class="eyebrow">GET IN TOUCH</span>
                 <h1>Let's Start a <span>Conversation</span></h1>
+
                 <p>
                     Have a question about our workshops or need help with your
                     registration? We'd love to hear from you.
@@ -48,6 +38,7 @@
                 <aside class="contact-info">
                     <span class="section-kicker">CONTACT INFORMATION</span>
                     <h2>We're here to help.</h2>
+
                     <p>
                         Send us your question and tell us how we can help.
                         Our team is here to make your ATHAR experience easier.
@@ -55,9 +46,11 @@
 
                     <div class="contact-info-card">
                         <div class="contact-info-icon" aria-hidden="true">@</div>
+
                         <div>
                             <h3>Email</h3>
                             <p>Contact the ATHAR team through our official email.</p>
+
                             <span class="contact-info-note">
                                 Add your official email address here.
                             </span>
@@ -66,9 +59,11 @@
 
                     <div class="contact-info-card">
                         <div class="contact-info-icon" aria-hidden="true">?</div>
+
                         <div>
                             <h3>Need quick help?</h3>
                             <p>Check our frequently asked questions.</p>
+
                             <a href="support.html" class="text-link">
                                 Visit Support →
                             </a>
@@ -77,6 +72,7 @@
 
                     <div class="contact-note">
                         <span aria-hidden="true">✦</span>
+
                         <p>
                             Every question matters. Give us the details and
                             we'll help you find the right direction.
@@ -93,8 +89,10 @@
 
                     <form id="contactForm">
                         <div class="form-row">
+
                             <div class="form-group">
                                 <label for="contactName">Full name</label>
+
                                 <input
                                     type="text"
                                     id="contactName"
@@ -109,6 +107,7 @@
 
                             <div class="form-group">
                                 <label for="contactEmail">Email address</label>
+
                                 <input
                                     type="email"
                                     id="contactEmail"
@@ -119,14 +118,17 @@
                                     required
                                 >
                             </div>
+
                         </div>
 
                         <div class="form-group">
                             <label for="contactSubject">Subject</label>
+
                             <select id="contactSubject" name="subject" required>
                                 <option value="" disabled selected>
                                     Select a subject
                                 </option>
+
                                 <option value="workshops">Workshops</option>
                                 <option value="registration">Registration</option>
                                 <option value="account">Account and profile</option>
@@ -138,6 +140,7 @@
 
                         <div class="form-group">
                             <label for="contactMessage">Your message</label>
+
                             <textarea
                                 id="contactMessage"
                                 name="message"
@@ -147,6 +150,7 @@
                                 placeholder="Tell us how we can help..."
                                 required
                             ></textarea>
+
                             <div class="character-count">
                                 <span id="messageCount">0</span>/3000
                             </div>
@@ -175,13 +179,8 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-container">
-            <a href="index.html" class="logo">ATHAR</a>
-            <p>Creating opportunities to learn, grow, and make an impact.</p>
-            <p>© <span id="currentYear"></span> ATHAR. All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- Shared Footer -->
+    <div id="sharedFooter"></div>
 
 </body>
 </html>

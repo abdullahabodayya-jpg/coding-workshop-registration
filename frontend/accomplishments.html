@@ -3,83 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore your ATHAR workshop registration history and learning progress.">
 
     <title>My Accomplishments | ATHAR</title>
 
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/accomplishments.css">
 
+    <script src="assets/js/shared-layout.js" defer></script>
     <script src="assets/js/auth.js" defer></script>
     <script src="assets/js/accomplishments.js" defer></script>
 </head>
 <body>
 
-<header class="site-header">
-    <nav class="navbar">
-        <a class="brand" href="index.html" aria-label="ATHAR home">
-                <img src="/athar/frontend/assets/images/athar_logo-removebg-preview.png" alt="logo" width="150px " height="50px">
-            </a>
+    <!-- Shared Header -->
+    <div id="sharedHeader"></div>
 
-        <div class="nav-links" id="navLinks">
-            <a href="index.html">Home</a>
-            <a href="workshops.html">Workshops</a>
-        </div>
+    <main class="accomplishments-page">
 
-        <div id="authActions" class="auth-actions"></div>
+        <section class="accomplishments-heading">
+            <p class="eyebrow">YOUR LEARNING JOURNEY</p>
+            <h1>My Accomplishments</h1>
+            <p>Explore your workshop history and learning progress.</p>
+        </section>
 
-        <button id="menuToggle" class="menu-toggle"
-                type="button" aria-label="Toggle navigation"
-                aria-expanded="false">
-            ☰
-        </button>
-    </nav>
-</header>
+        <section class="summary-grid">
+            <article class="summary-card">
+                <span class="summary-icon" aria-hidden="true">▣</span>
+                <p>Confirmed Registrations</p>
+                <strong id="confirmedCount">—</strong>
+            </article>
 
-<main class="accomplishments-page">
+            <article class="summary-card">
+                <span class="summary-icon" aria-hidden="true">✓</span>
+                <p>Completed Workshops</p>
+                <strong id="completedCount">—</strong>
+            </article>
+        </section>
 
-    <section class="accomplishments-heading">
-        <p class="eyebrow">YOUR LEARNING JOURNEY</p>
-        <h1>My Accomplishments</h1>
-        <p>Explore your workshop history and learning progress.</p>
-    </section>
+        <section class="history-section">
+            <div class="history-heading">
+                <div>
+                    <h2>Workshop History</h2>
+                    <p>Your workshop registrations and their current status.</p>
+                </div>
 
-    <section class="summary-grid">
-        <article class="summary-card">
-            <span class="summary-icon">▣</span>
-            <p>Confirmed Registrations</p>
-            <strong id="confirmedCount">—</strong>
-        </article>
-
-        <article class="summary-card">
-            <span class="summary-icon">✓</span>
-            <p>Completed Workshops</p>
-            <strong id="completedCount">—</strong>
-        </article>
-    </section>
-
-    <section class="history-section">
-        <div class="history-heading">
-            <div>
-                <h2>Workshop History</h2>
-                <p>Your workshop registrations and their current status.</p>
+                <a href="workshops.html" class="browse-link">
+                    Explore Workshops →
+                </a>
             </div>
 
-            <a href="workshops.html" class="browse-link">
-                Explore Workshops →
-            </a>
-        </div>
+            <div
+                id="accomplishmentsMessage"
+                class="accomplishments-message"
+                role="status"
+                aria-live="polite"
+                hidden
+            ></div>
 
-        <div id="accomplishmentsMessage"
-             class="accomplishments-message" hidden></div>
+            <div
+                id="registrationList"
+                class="registration-list"
+            ></div>
+        </section>
 
-        <div id="registrationList" class="registration-list"></div>
-    </section>
+    </main>
 
-</main>
-
-<footer class="site-footer">
-    <p>© <span id="currentYear"></span> ATHAR. All rights reserved.</p>
-</footer>
+    <!-- Shared Footer -->
+    <div id="sharedFooter"></div>
 
 </body>
 </html>

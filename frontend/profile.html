@@ -3,177 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manage your ATHAR profile, account details, and preferences.">
+
     <title>My Profile | ATHAR</title>
 
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/profile.css">
 
+    <script src="assets/js/shared-layout.js" defer></script>
     <script src="assets/js/auth.js" defer></script>
     <script src="assets/js/profile.js" defer></script>
 </head>
 <body>
 
-<header class="site-header">
-    <nav class="navbar">
-        <a class="brand" href="index.html" aria-label="ATHAR home">
-                <img src="/athar/frontend/assets/images/athar_logo-removebg-preview.png" alt="logo" width="150px " height="50px">
-            </a>
+    <!-- Shared Header -->
+    <div id="sharedHeader"></div>
 
-        <div class="nav-links" id="navLinks">
-            <a href="index.html">Home</a>
-            <a href="workshops.html">Workshops</a>
-        </div>
+    <main class="profile-page">
 
-        <div id="authActions" class="auth-actions"></div>
+        <section class="profile-heading">
+            <p class="eyebrow">YOUR ACCOUNT</p>
+            <h1>My Profile</h1>
+            <p>Manage your personal information and account details.</p>
+        </section>
 
-        <button id="menuToggle" class="menu-toggle"
-                type="button" aria-label="Toggle navigation"
-                aria-expanded="false">
-            ☰
-        </button>
-    </nav>
-</header>
-
-<main class="profile-page">
-    <section class="profile-heading">
-        <p class="eyebrow">YOUR ACCOUNT</p>
-        <h1>My Profile</h1>
-        <p>Manage your personal information and account details.</p>
-    </section>
-
-    <section class="profile-card">
-        <div class="profile-card-heading">
-            <div>
-                <h2>Personal Information</h2>
-                <p>Keep your information up to date.</p>
-            </div>
-            <span id="accountStatus" class="status-badge">Loading...</span>
-        </div>
-
-        <div id="profileMessage" class="profile-message" hidden></div>
-
-        <form id="profileForm">
-            <div class="form-grid">
-                <div class="field">
-                    <label for="first_name">First name</label>
-                    <input id="first_name" name="first_name"
-                           type="text" maxlength="100" required>
+        <section class="profile-card">
+            <div class="profile-card-heading">
+                <div>
+                    <h2>Personal Information</h2>
+                    <p>Keep your information up to date.</p>
                 </div>
 
-                <div class="field">
-                    <label for="last_name">Last name</label>
-                    <input id="last_name" name="last_name"
-                           type="text" maxlength="100" required>
-                </div>
-
-                <div class="field">
-                    <label for="email">Email address</label>
-                    <input id="email" name="email"
-                           type="email" maxlength="255" required>
-                </div>
-
-                <div class="field">
-                    <label for="phone">Phone number</label>
-                    <input id="phone" name="phone"
-                           type="tel" maxlength="20" required>
-                </div>
-
-                <div class="field">
-                    <label for="gender">Gender</label>
-                    <select id="gender" name="gender" required>
-                        <option value="">Select gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                </div>
-
-                <div class="field">
-                    <label for="birth_date">Date of birth</label>
-                    <input id="birth_date" name="birth_date"
-                           type="date">
-                </div>
-
-                <div class="field full-width">
-                    <label for="location">Location</label>
-                    <input id="location" name="location"
-                           type="text" maxlength="255"
-                           placeholder="e.g. Amman, Jordan">
-                </div>
+                <span id="accountStatus" class="status-badge">
+                    Loading...
+                </span>
             </div>
 
-            <div class="profile-actions">
-                <button type="reset" class="btn btn-secondary"
-                        id="resetButton">
-                    Reset Changes
+            <div
+                id="profileMessage"
+                class="profile-message"
+                role="status"
+                aria-live="polite"
+                hidden
+            ></div>
+
+            <form id="profileForm">
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="first_name">First name</label>
+                        <input
+                            id="first_name"
+                            name="first_name"
+                            type="text"
+                            maxlength="100"
+                            autocomplete="given-name"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="last_name">Last name</label>
+                        <input
+                            id="last_name"
+                            name="last_name"
+                            type="text"
+                            maxlength="100"
+                            autocomplete="family-name"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email address</label>
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            maxlength="255"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="phone">Phone number</label>
+                        <input
+                            id="phone"
+                            name="phone"
+                            type="tel"
+                            maxlength="20"
+                            autocomplete="tel"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="birth_date">Date of birth</label>
+                        <input
+                            id="birth_date"
+                            name="birth_date"
+                            type="date"
+                            autocomplete="bday"
+                        >
+                    </div>
+
+                    <div class="field full-width">
+                        <label for="location">Location</label>
+                        <input
+                            id="location"
+                            name="location"
+                            type="text"
+                            maxlength="255"
+                            autocomplete="address-level2"
+                            placeholder="e.g. Amman, Jordan"
+                        >
+                    </div>
+
+                </div>
+
+                <div class="profile-actions">
+                    <button
+                        type="reset"
+                        class="btn btn-secondary"
+                        id="resetButton"
+                    >
+                        Reset Changes
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        id="saveButton"
+                    >
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Preferences -->
+        <section class="account-info settings-section">
+            <h2>Preferences</h2>
+
+            <div class="setting-row">
+                <div>
+                    <h3>Language</h3>
+                    <p>Choose your preferred language.</p>
+                </div>
+
+                <select id="languageSelect" aria-label="Language">
+                    <option value="en">English</option>
+                    <option value="ar">العربية</option>
+                </select>
+            </div>
+
+            <div class="setting-row">
+                <div>
+                    <h3>Appearance</h3>
+                    <p>Choose how ATHAR looks on your device.</p>
+                </div>
+
+                <select id="themeSelect" aria-label="Appearance">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Account Details -->
+        <section class="account-info">
+            <h2>Account Details</h2>
+
+            <div class="account-info-row">
+                <span>Member since</span>
+                <span id="createdAt">—</span>
+            </div>
+        </section>
+
+        <!-- Account Actions -->
+        <section class="account-info settings-section">
+            <h2>Account</h2>
+
+            <div class="setting-row">
+                <div>
+                    <h3>Log out</h3>
+                    <p>Sign out of your ATHAR account on this device.</p>
+                </div>
+
+                <button
+                    type="button"
+                    id="settingsLogout"
+                    class="settings-logout"
+                >
+                    Log out
                 </button>
-
-                <button type="submit" class="btn btn-primary"
-                        id="saveButton">
-                    Save Changes
-                </button>
             </div>
-        </form>
-    </section>
+        </section>
 
-    <section class="account-info settings-section">
-    <h2>Preferences</h2>
+    </main>
 
-    <div class="setting-row">
-        <div>
-            <h3>Language</h3>
-            <p>Choose your preferred language.</p>
-        </div>
-
-        <select id="languageSelect" aria-label="Language">
-            <option value="en">English</option>
-            <option value="ar">العربية</option>
-        </select>
-    </div>
-
-    <div class="setting-row">
-        <div>
-            <h3>Appearance</h3>
-            <p>Choose how ATHAR looks on your device.</p>
-        </div>
-
-        <select id="themeSelect" aria-label="Appearance">
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-        </select>
-    </div>
-</section>
-
-
-
-    <section class="account-info">
-        <h2>Account Details</h2>
-        <div class="account-info-row">
-            <span>Member since</span>
-            <span id="createdAt">—</span>
-        </div>
-    </section>
-
-    <!-- Account -->
-<section class="account-info settings-section">
-    <h2>Account</h2>
-
-    <div class="setting-row">
-        <div>
-            <h3>Log out</h3>
-            <p>Sign out of your ATHAR account on this device.</p>
-        </div>
-
-        <button type="button" id="settingsLogout"
-                class="settings-logout">
-            Log out
-        </button>
-    </div>
-</section>
-</main>
-
-<footer class="site-footer">
-    <p>© <span id="currentYear"></span> ATHAR. All rights reserved.</p>
-</footer>
+    <!-- Shared Footer -->
+    <div id="sharedFooter"></div>
 
 </body>
 </html>
