@@ -15,23 +15,39 @@
 </head>
 <body>
 
-    <header class="site-header">
-        <nav class="navbar">
-            <a href="index.html" class="logo">ATHAR<span>.</span></a>
 
-            <button class="menu-toggle" id="menuToggle"
-                    aria-label="Open navigation" aria-expanded="false">
-                ☰
-            </button>
+<header class="site-header">
+    <nav class="navbar container" aria-label="Main navigation">
 
-            <div class="nav-links" id="navLinks">
-                <a href="index.html">Home</a>
-                <a href="workshops.html" class="active">Workshops</a>
-                <a href="my-registrations.html">My Registrations</a>
-                <a href="login.html" class="nav-login">Login</a>
-            </div>
-        </nav>
-    </header>
+        <a class="logo" href="workshops.html" aria-label="ATHAR home">
+            ATHAR<span>.</span>
+        </a>
+
+        <button
+            id="menuToggle"
+            class="menu-toggle"
+            type="button"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="navLinks"
+        >
+            ☰
+        </button>
+
+        <div class="nav-links" id="navLinks">
+            <a href="workshops.html" aria-current="page">Workshops</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="nav-actions" id="authActions">
+            <a class="login-link" href="login.html">Log in</a>
+            <a class="btn btn-primary" href="register.html">Join ATHAR</a>
+        </div>
+
+    </nav>
+</header>
+
 
     <main>
         <div class="details-container">
@@ -175,9 +191,41 @@
         </div>
     </main>
 
-    <footer class="site-footer">
+     <footer class="site-footer">
         <p>© <span id="currentYear"></span> ATHAR. Learn today, build tomorrow.</p>
     </footer>
 
+    <!-- Cancel Registration Popup -->
+    <div id="cancelPopup" class="popup-overlay" hidden>
+        <div class="popup-card"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="cancelPopupTitle"
+             aria-describedby="cancelPopupMessage">
+
+            <div class="popup-icon">!</div>
+
+            <h2 id="cancelPopupTitle">Cancel Your Booking?</h2>
+
+            <p id="cancelPopupMessage">
+                Are you sure you want to cancel your registration?
+                Your reserved seat will become available to someone else.
+            </p>
+
+            <div class="popup-actions">
+                <button type="button" id="keepBookingButton"
+                        class="popup-button popup-secondary">
+                    Keep My Booking
+                </button>
+
+                <button type="button" id="confirmCancelButton"
+                        class="popup-button popup-danger">
+                    Cancel Booking
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/auth.js"></script>
 </body>
 </html>

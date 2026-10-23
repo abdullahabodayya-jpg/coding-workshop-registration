@@ -61,13 +61,28 @@ function normalizeWorkshop(workshop, index) {
         date: formatDate(workshop.start_at),
         type: workshop.type,
         typeLabel: workshop.type === "online" ? "Online" : "On-site",
-        capacity: Number(workshop.capacity) > 0
-            ? `${workshop.capacity} seats`
-            : "Capacity to be announced",
+        capacity: workshop.capacity != null && workshop.capacity !== ""
+                ? `${workshop.capacity} seats`
+                : "Capacity to be announced",
         theme: theme.theme,
         code: theme.code,
         imageUrl: workshop.image_url || "assets/images/default-workshop.jpg"
     };
+}
+
+function requireLogin(event) {
+    // Let logged-in users continue normally.
+    if (document.getElementById("logoutButton")) {
+        return;
+    }
+
+    event.preventDefault();
+
+    const returnTo =
+        event.currentTarget.getAttribute("href");
+
+    window.location.href =
+        `login.html?returnTo=${encodeURIComponent(returnTo)}`;
 }
 
 function createWorkshopCard(workshop) {
@@ -116,6 +131,8 @@ function createWorkshopCard(workshop) {
     link.href = `workshop-details.html?id=${encodeURIComponent(workshop.id)}`;
     link.textContent = "View details →";
     link.setAttribute("aria-label", `View details for ${workshop.title}`);
+
+    link.addEventListener("click", requireLogin);
 
     footer.append(capacity, link);
     body.append(meta, title, description, footer);

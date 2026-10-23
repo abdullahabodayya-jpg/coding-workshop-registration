@@ -1,5 +1,6 @@
-
 <?php
+
+require_once __DIR__ . "/../auth/api_init.php";
 
 require_once __DIR__ . "/../../config/Database.php";
 require_once __DIR__ . "/../../repositories/WorkshopRepository.php";

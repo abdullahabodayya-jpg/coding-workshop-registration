@@ -12,24 +12,32 @@
 </head>
 <body>
     <header class="site-header">
-        <nav class="navbar container">
-            <a class="logo" href="index.html">ATHAR</a>
+    <nav class="navbar container" aria-label="Main navigation">
 
-            <button
-                id="menuToggle"
-                class="menu-toggle"
-                aria-label="Open navigation"
-                aria-expanded="false"
-            >☰</button>
+        <a class="logo" href="workshops.html">ATHAR</a>
 
-            <div class="nav-links" id="navLinks">
-                <a href="index.html">Home</a>
-                <a href="workshops.html" aria-current="page">Workshops</a>
-                <a href="login.html">Login</a>
-                <a href="register.html" class="btn btn-primary">Join ATHAR</a>
-            </div>
-        </nav>
-    </header>
+        <button
+            id="menuToggle"
+            class="menu-toggle"
+            type="button"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="navLinks"
+        >☰</button>
+
+        <div class="nav-links" id="navLinks">
+            <a href="workshops.html" aria-current="page">Workshops</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="nav-actions" id="authActions">
+            <a class="login-link" href="login.html">Log in</a>
+            <a class="btn btn-primary" href="register.html">Join ATHAR</a>
+        </div>
+
+    </nav>
+</header>
 
     <main>
         <section class="workshops-hero">
@@ -86,5 +94,6 @@
             <p>© <span id="currentYear"></span> ATHAR. All rights reserved.</p>
         </div>
     </footer>
+    <script src="assets/js/auth.js"></script>
 </body>
 </html>

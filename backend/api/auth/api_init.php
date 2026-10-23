@@ -8,6 +8,7 @@ $allowedOrigins = [
 ];
 
 $origin = $_SERVER["HTTP_ORIGIN"] ?? "";
+error_log("ATHAR API Origin: " . ($origin ?: "(empty)"));
 
 if (in_array($origin, $allowedOrigins, true)) {
     header("Access-Control-Allow-Origin: " . $origin);
@@ -24,11 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
     exit;
 }
 
-if (!in_array($origin, $allowedOrigins, true)) {
+if (
+    $origin !== "" &&
+    !in_array($origin, $allowedOrigins, true)
+) {
     http_response_code(403);
     echo json_encode([
         "success" => false,
-        "message" => "Origin not allowed."
+        "message" => "Origin not allowed.",
+        "received_origin" => $origin
     ]);
     exit;
 }
