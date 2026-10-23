@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Accomplishments | ATHAR</title>
+
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/accomplishments.css">
+
+    <script src="assets/js/auth.js" defer></script>
+    <script src="assets/js/accomplishments.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar">
+        <a href="index.html" class="logo">ATHAR</a>
+
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="workshops.html">Workshops</a>
+        </div>
+
+        <div id="authActions" class="auth-actions"></div>
+
+        <button id="menuToggle" class="menu-toggle"
+                type="button" aria-label="Toggle navigation"
+                aria-expanded="false">
+            ☰
+        </button>
+    </nav>
+</header>
+
+<main class="accomplishments-page">
+
+    <section class="accomplishments-heading">
+        <p class="eyebrow">YOUR LEARNING JOURNEY</p>
+        <h1>My Accomplishments</h1>
+        <p>Explore your workshop history and learning progress.</p>
+    </section>
+
+    <section class="summary-grid">
+        <article class="summary-card">
+            <span class="summary-icon">▣</span>
+            <p>Confirmed Registrations</p>
+            <strong id="confirmedCount">—</strong>
+        </article>
+
+        <article class="summary-card">
+            <span class="summary-icon">✓</span>
+            <p>Completed Workshops</p>
+            <strong id="completedCount">—</strong>
+        </article>
+    </section>
+
+    <section class="history-section">
+        <div class="history-heading">
+            <div>
+                <h2>Workshop History</h2>
+                <p>Your workshop registrations and their current status.</p>
+            </div>
+
+            <a href="workshops.html" class="browse-link">
+                Explore Workshops →
+            </a>
+        </div>
+
+        <div id="accomplishmentsMessage"
+             class="accomplishments-message" hidden></div>
+
+        <div id="registrationList" class="registration-list"></div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <p>© <span id="currentYear"></span> ATHAR. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

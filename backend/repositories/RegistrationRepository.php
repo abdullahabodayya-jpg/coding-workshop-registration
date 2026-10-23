@@ -92,4 +92,36 @@ class RegistrationRepository
                     "id" => $registrationId
                 ]);
             }
+
+    public function getUserAccomplishments(string $userId): array
+{
+    $sql = "
+        SELECT
+            r.id AS registration_id,
+            r.status AS registration_status,
+            r.registered_at,
+            w.id AS workshop_id,
+            w.title,
+            w.description,
+            w.start_at,
+            w.end_at,
+            w.location,
+            w.image_url,
+            w.type,
+            w.status AS workshop_status
+        FROM registrations r
+        INNER JOIN workshops w
+            ON w.id = r.workshop_id
+        WHERE r.user_id = :user_id
+        ORDER BY
+            CASE WHEN w.status = 'completed' THEN 0 ELSE 1 END,
+            COALESCE(w.end_at, w.start_at) DESC,
+            r.registered_at DESC
+    ";
+
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute(["user_id" => $userId]);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 }
