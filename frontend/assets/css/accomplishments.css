@@ -9,10 +9,7 @@
 }
 
 .accomplishments-heading .eyebrow {
-    color: #ff6b00;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 2px;
+    color: var(--primary-dark);
 }
 
 .accomplishments-heading h1 {
@@ -22,7 +19,7 @@
 
 .accomplishments-heading > p:last-child,
 .history-heading p {
-    color: #777;
+    color: var(--muted);
     line-height: 1.6;
 }
 
@@ -35,9 +32,16 @@
 
 .summary-card {
     padding: 25px;
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: transform var(--transition),
+                box-shadow var(--transition);
+}
+
+.summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
 .summary-icon {
@@ -46,19 +50,22 @@
     height: 42px;
     align-items: center;
     justify-content: center;
-    background: #fff1e6;
-    color: #ff6b00;
+    background: var(--primary-light);
+    color: var(--primary-dark);
     border-radius: 12px;
     font-size: 1.4rem;
 }
 
 .summary-card p {
-    color: #666;
+    color: var(--muted);
     margin: 16px 0 8px;
 }
 
 .summary-card strong {
+    color: var(--text);
+    font-family: var(--font-heading);
     font-size: 2rem;
+    font-weight: 800;
 }
 
 .history-heading {
@@ -79,9 +86,16 @@
 
 .browse-link,
 .details-link {
-    color: #e85d00;
-    font-weight: 600;
+    color: var(--primary-dark);
+    font-weight: 700;
     text-decoration: none;
+    transition: color var(--transition);
+}
+
+.browse-link:hover,
+.details-link:hover {
+    color: var(--primary);
+    text-decoration: underline;
 }
 
 .registration-list {
@@ -95,187 +109,18 @@
     align-items: start;
     gap: 24px;
     padding: 20px;
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgb(0 0 0 / 4%);
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 16px rgba(70, 90, 140, 0.04);
+    transition: border-color var(--transition),
+                box-shadow var(--transition);
 }
 
-.workshop-image {
-    display: block;
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 12px;
-    background: #f3f3f3;
+.registration-card:hover {
+    border-color: #D2DCF3;
+    box-shadow: var(--shadow);
 }
-
-.workshop-image.no-image {
-    visibility: hidden;
-}
-
-.registration-content h3 {
-    margin: 0 0 12px;
-    font-size: 1.2rem;
-}
-
-.workshop-date,
-.workshop-location,
-.registered-date {
-    color: #777;
-    font-size: 0.92rem;
-    margin: 8px 0;
-}
-
-.workshop-image.no-image {
-    visibility: visible;
-    object-fit: contain;
-}
-
-.registration-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    min-width: 0;
-    gap: 10px;
-}
-
-.registration-content h3 {
-    margin: 0;
-    color: #222;
-    font-size: 1.25rem;
-    line-height: 1.4;
-}
-
-.workshop-date,
-.workshop-location,
-.registered-date {
-    margin: 0;
-    color: #777;
-    font-size: 0.92rem;
-    line-height: 1.5;
-}
-
-.registration-status {
-    display: inline-flex;
-    align-items: center;
-    width: fit-content;
-    margin: 2px 0;
-    padding: 7px 12px;
-    border-radius: 20px;
-    font-size: 0.82rem;
-    font-weight: 600;
-}
-
-.status-confirmed {
-    color: #176b3a;
-    background: #e7f6ec;
-}
-
-.status-completed {
-    color: #174ea6;
-    background: #e8f0fe;
-}
-
-.status-cancelled {
-    color: #b42318;
-    background: #fff0ee;
-}
-
-.details-link {
-    display: inline-block;
-    margin-top: 4px;
-    color: #e85d00;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.details-link:hover {
-    color: #c94f00;
-    text-decoration: underline;
-}
-
-@media (max-width: 650px) {
-    .registration-card {
-        grid-template-columns: 1fr;
-        gap: 18px;
-        padding: 16px;
-    }
-
-    .workshop-image {
-        height: 200px;
-    }
-}
-
-.registration-status {
-    display: inline-block;
-    margin: 6px 0;
-    padding: 6px 10px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.status-confirmed {
-    color: #176b3a;
-    background: #e7f6ec;
-}
-
-.status-completed {
-    color: #174ea6;
-    background: #e8f0fe;
-}
-
-.status-cancelled {
-    color: #b42318;
-    background: #fff0ee;
-}
-
-.details-link {
-    display: inline-block;
-    margin-top: 8px;
-}
-
-.accomplishments-message {
-    padding: 18px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    line-height: 1.6;
-}
-
-.accomplishments-message.info {
-    background: #fff1e6;
-    color: #75400e;
-}
-
-.accomplishments-message.error {
-    background: #fff0ee;
-    color: #b42318;
-}
-
-.accomplishments-message[hidden] {
-    display: none;
-}
-
-@media (max-width: 650px) {
-    .summary-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .history-heading {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .registration-card {
-        grid-template-columns: 1fr;
-    }
-
-    .workshop-image {
-        height: 200px;
-    }
-}
-
 
 .workshop-image-wrapper {
     position: relative;
@@ -284,7 +129,7 @@
     min-height: 180px;
     overflow: hidden;
     border-radius: 12px;
-    background: #fff1e6;
+    background: var(--primary-light);
 }
 
 .workshop-image {
@@ -306,41 +151,47 @@
     gap: 9px;
     padding: 15px;
     text-align: center;
-    color: #fff;
-    background: linear-gradient(145deg, #211b18, #56321e 60%, #ff6b00);
-    border: 1px solid #dca96b;
+    color: var(--white);
+    background: linear-gradient(
+        145deg,
+        #292B33,
+        #43577F 60%,
+        var(--primary)
+    );
+    border: 1px solid #A9BCE5;
 }
 
 .workshop-image-placeholder::before {
     content: "";
     position: absolute;
     inset: 8px;
-    border: 1px solid rgb(255 218 160 / 65%);
+    border: 1px solid rgba(238, 242, 252, 0.55);
     border-radius: 7px;
     pointer-events: none;
 }
 
 .certificate-icon {
-    color: #ffd28a;
+    color: #DCE6FF;
     font-size: 1.4rem;
     line-height: 1;
 }
 
 .placeholder-brand {
-    color: #ffd28a;
+    color: #DCE6FF;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 4px;
 }
 
 .workshop-image-placeholder strong {
-    color: #fff;
-    font-size: 1.35rem;
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
     letter-spacing: 2px;
 }
 
 .placeholder-subtitle {
-    color: #f7e5d3;
+    color: #E5EAF7;
     font-size: 0.65rem;
     letter-spacing: 1.5px;
 }
@@ -350,8 +201,104 @@
     display: none;
 }
 
+.registration-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    gap: 10px;
+}
+
+.registration-content h3 {
+    margin: 0;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    line-height: 1.4;
+}
+
+.workshop-date,
+.workshop-location,
+.registered-date {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.registration-status {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin: 2px 0;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.status-confirmed {
+    color: #28664F;
+    background: #E8F4EE;
+}
+
+.status-completed {
+    color: var(--primary-dark);
+    background: var(--primary-light);
+}
+
+.status-cancelled {
+    color: #B42318;
+    background: #FFF0F0;
+}
+
+.details-link {
+    display: inline-block;
+    margin-top: 4px;
+}
+
+.accomplishments-message {
+    padding: 18px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    line-height: 1.6;
+}
+
+.accomplishments-message.info {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    border-color: #DCE5F8;
+}
+
+.accomplishments-message.error {
+    background: #FFF0F0;
+    color: #B42318;
+    border-color: #F5D0D0;
+}
+
+.accomplishments-message[hidden] {
+    display: none;
+}
+
 @media (max-width: 650px) {
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .history-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .registration-card {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 16px;
+    }
+
     .workshop-image-wrapper {
         height: 200px;
+        min-height: 200px;
     }
 }

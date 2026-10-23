@@ -1,0 +1,358 @@
+
+/* =========================
+   About Hero
+========================= */
+
+.about-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 100px 0 110px;
+    background: linear-gradient(135deg, var(--primary-light), var(--background) 75%);
+}
+
+.about-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 850px;
+    text-align: center;
+}
+
+.about-hero h1 {
+    margin: 20px 0;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 6vw, 4.2rem);
+    line-height: 1.16;
+    letter-spacing: -1.5px;
+}
+
+.about-hero h1 span {
+    color: var(--primary-dark);
+}
+
+.about-hero-content > p {
+    max-width: 660px;
+    margin: 0 auto 30px;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.9;
+}
+
+.about-primary-button,
+.about-cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.about-primary-button span,
+.about-cta-button span {
+    transition: transform var(--transition);
+}
+
+.about-primary-button:hover span,
+.about-cta-button:hover span {
+    transform: translateX(4px);
+}
+
+.about-hero-decoration {
+    position: absolute;
+    border: 1px solid rgba(111, 143, 214, 0.2);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.decoration-one {
+    top: -110px;
+    right: -80px;
+    width: 330px;
+    height: 330px;
+}
+
+.decoration-two {
+    bottom: -180px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+}
+
+/* =========================
+   Introduction
+========================= */
+
+.about-intro {
+    padding: 85px 0;
+    background: var(--white);
+}
+
+.about-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 70px;
+    align-items: start;
+}
+
+.about-section-label h2,
+.values-heading h2 {
+    margin: 14px 0 0;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    line-height: 1.35;
+}
+
+.about-intro-copy p,
+.values-heading > p {
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.9;
+}
+
+.about-intro-copy p:last-child {
+    margin-bottom: 0;
+}
+
+/* =========================
+   Mission, Vision, Approach
+========================= */
+
+.about-purpose {
+    padding: 85px 0;
+    background: var(--background);
+}
+
+.about-centered-heading {
+    max-width: 680px;
+    margin: 0 auto 44px;
+    text-align: center;
+}
+
+.about-centered-heading h2 {
+    margin: 14px 0;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.3;
+}
+
+.about-centered-heading p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.purpose-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.purpose-card {
+    padding: 32px 28px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
+}
+
+.purpose-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(111, 143, 214, 0.5);
+    box-shadow: var(--shadow-hover);
+}
+
+.purpose-icon {
+    display: grid;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 24px;
+    place-items: center;
+    border-radius: var(--radius);
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    font-size: 1.65rem;
+}
+
+.purpose-card h3 {
+    margin: 0 0 12px;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+}
+
+.purpose-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.94rem;
+    line-height: 1.8;
+}
+
+/* =========================
+   Values
+========================= */
+
+.about-values {
+    padding: 90px 0;
+    background: var(--white);
+}
+
+.values-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+.values-heading > p {
+    margin-top: 22px;
+}
+
+.values-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.value-item {
+    display: flex;
+    gap: 22px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.value-item:first-child {
+    padding-top: 0;
+}
+
+.value-item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.value-number {
+    flex-shrink: 0;
+    color: var(--primary-dark);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.value-item h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+}
+
+.value-item p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.93rem;
+    line-height: 1.7;
+}
+
+/* =========================
+   Call to Action
+========================= */
+
+.about-cta {
+    padding: 75px 0;
+    background: var(--primary-light);
+}
+
+.about-cta-content {
+    max-width: 760px;
+    text-align: center;
+}
+
+.about-cta h2 {
+    margin: 15px 0;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: clamp(1.9rem, 4vw, 2.7rem);
+    line-height: 1.3;
+}
+
+.about-cta p {
+    max-width: 600px;
+    margin: 0 auto 26px;
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+/* =========================
+   Footer
+========================= */
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.footer-container p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 900px) {
+    .about-hero {
+        padding: 80px 0;
+    }
+
+    .about-intro-grid,
+    .values-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .purpose-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .purpose-card {
+        padding: 28px;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-hero {
+        padding: 65px 0;
+    }
+
+    .about-hero h1 {
+        letter-spacing: -0.6px;
+    }
+
+    .about-intro,
+    .about-purpose,
+    .about-values {
+        padding: 55px 0;
+    }
+
+    .about-cta {
+        padding: 55px 0;
+    }
+
+    .purpose-card {
+        padding: 24px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

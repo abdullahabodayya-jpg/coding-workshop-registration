@@ -114,11 +114,7 @@ function updateHeader(user) {
             href: "accomplishments.html",
             icon: "✦"
         },
-        {
-            label: "My Workshops",
-            href: "my-workshops.html",
-            icon: "▦"
-        },
+        
         { label: "Support", href: "support.html", icon: "?" }
     ];
 
