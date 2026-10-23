@@ -1,0 +1,494 @@
+
+:root {
+    --details-primary: #6F8FD6;
+    --details-primary-dark: #5678C2;
+    --details-lavender: #E6E0F0;
+    --details-coffee: #6F4E37;
+    --details-text: #252A35;
+    --details-muted: #737B8C;
+    --details-border: #E8EAF0;
+    --details-background: #F7F8FC;
+}
+
+body {
+    background: var(--details-background);
+    color: var(--details-text);
+}
+
+.site-header {
+    position: relative;
+    z-index: 10;
+}
+
+.details-container {
+    width: min(1160px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 28px 0 72px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 22px;
+    color: var(--details-primary-dark);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.page-message {
+    padding: 48px 20px;
+    text-align: center;
+    color: var(--details-muted);
+    background: #FFFFFF;
+    border: 1px solid var(--details-border);
+    border-radius: 18px;
+}
+
+.page-message.error {
+    color: #A33B45;
+}
+
+/* Cover image */
+
+.workshop-cover {
+    position: relative;
+    min-height: 390px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #6F8FD6, #6F4E37);
+    box-shadow: 0 18px 45px rgba(40, 51, 78, 0.12);
+}
+
+.workshop-cover > img {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cover-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        90deg,
+        rgba(18, 24, 39, 0.88) 0%,
+        rgba(18, 24, 39, 0.58) 55%,
+        rgba(18, 24, 39, 0.12) 100%
+    );
+}
+
+.cover-content {
+    width: min(760px, 100%);
+    padding: 48px;
+    color: #FFFFFF;
+}
+
+.cover-badge {
+    display: inline-flex;
+    padding: 7px 12px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(8px);
+}
+
+.cover-content h1 {
+    max-width: 720px;
+    margin: 0;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.12;
+    letter-spacing: -1.2px;
+}
+
+.cover-content p {
+    max-width: 650px;
+    margin: 18px 0 0;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* Main layout */
+
+.details-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    align-items: start;
+    gap: 28px;
+    margin-top: 30px;
+}
+
+.details-main {
+    min-width: 0;
+}
+
+.info-section,
+.instructor-section {
+    padding: 30px;
+    margin-bottom: 24px;
+    border: 1px solid var(--details-border);
+    border-radius: 20px;
+    background: #FFFFFF;
+}
+
+.section-heading {
+    margin-bottom: 22px;
+}
+
+.section-kicker,
+.registration-kicker {
+    color: var(--details-primary-dark);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+    margin: 8px 0 0;
+    color: var(--details-text);
+    font-size: 26px;
+    letter-spacing: -0.5px;
+}
+
+.description-text {
+    margin: 0;
+    color: var(--details-muted);
+    font-size: 15px;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+}
+
+/* Information cards */
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    min-width: 0;
+    padding: 17px;
+    border: 1px solid #ECEEF5;
+    border-radius: 14px;
+    background: #FBFBFE;
+}
+
+.info-icon {
+    display: grid;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border-radius: 12px;
+    background: var(--details-lavender);
+    color: var(--details-primary-dark);
+    font-size: 21px;
+}
+
+.info-card > div {
+    display: grid;
+    gap: 7px;
+    min-width: 0;
+}
+
+.info-label {
+    color: var(--details-muted);
+    font-size: 12px;
+}
+
+.info-card strong {
+    color: var(--details-text);
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+/* Instructor */
+
+.instructor-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 22px;
+    border-radius: 16px;
+    background: #FBFAFD;
+    border: 1px solid #EFEBF5;
+}
+
+.instructor-avatar {
+    display: grid;
+    flex: 0 0 68px;
+    width: 68px;
+    height: 68px;
+    place-items: center;
+    border-radius: 20px;
+    background: linear-gradient(
+        135deg,
+        var(--details-primary),
+        #A7B8E8
+    );
+    color: #FFFFFF;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.instructor-info {
+    min-width: 0;
+}
+
+.instructor-info h3 {
+    margin: 3px 0 8px;
+    font-size: 18px;
+}
+
+.instructor-info p {
+    margin: 0;
+    color: var(--details-muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* Registration panel */
+
+.registration-card {
+    position: sticky;
+    top: 24px;
+    padding: 28px;
+    border: 1px solid rgba(111, 143, 214, 0.2);
+    border-radius: 20px;
+    background: #FFFFFF;
+    box-shadow: 0 14px 40px rgba(42, 56, 91, 0.08);
+}
+
+.registration-card h2 {
+    margin: 12px 0;
+    font-size: 27px;
+    letter-spacing: -0.6px;
+}
+
+.registration-card > p:not(.registration-note) {
+    margin: 0;
+    color: var(--details-muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.registration-divider {
+    height: 1px;
+    margin: 24px 0;
+    background: var(--details-border);
+}
+
+.registration-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+.registration-detail span {
+    color: var(--details-muted);
+    font-size: 12px;
+}
+
+.registration-detail strong {
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.register-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 12px;
+    padding: 15px 17px;
+    margin-top: 24px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--details-primary);
+    color: #FFFFFF;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.register-button:not(:disabled):hover {
+    background: var(--details-primary-dark);
+    transform: translateY(-2px);
+}
+
+.register-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.registration-note {
+    margin: 14px 0 0;
+    color: var(--details-muted);
+    font-size: 12px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+/* Footer */
+
+.site-footer {
+    padding: 24px 20px;
+    border-top: 1px solid var(--details-border);
+    background: #FFFFFF;
+    color: var(--details-muted);
+    text-align: center;
+    font-size: 13px;
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    .details-layout {
+        grid-template-columns: minmax(0, 1fr) 290px;
+        gap: 18px;
+    }
+
+    .info-section,
+    .instructor-section {
+        padding: 24px;
+    }
+
+    .registration-card {
+        padding: 22px;
+    }
+
+    .cover-content {
+        padding: 36px;
+    }
+}
+
+@media (max-width: 720px) {
+    .details-container {
+        width: min(100% - 28px, 560px);
+        padding-top: 20px;
+        padding-bottom: 44px;
+    }
+
+    .details-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .workshop-cover {
+        min-height: 340px;
+        border-radius: 18px;
+    }
+
+    .cover-content {
+        padding: 26px;
+    }
+
+    .cover-overlay {
+        background: linear-gradient(
+            0deg,
+            rgba(18, 24, 39, 0.9),
+            rgba(18, 24, 39, 0.15)
+        );
+    }
+
+    .cover-content h1 {
+        font-size: 34px;
+    }
+
+    .cover-content p {
+        font-size: 14px;
+    }
+
+    .registration-card {
+        position: static;
+        grid-row: 1;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-section,
+    .instructor-section {
+        padding: 22px;
+    }
+}
+
+@media (max-width: 420px) {
+    .workshop-cover {
+        min-height: 300px;
+    }
+
+    .cover-content {
+        padding: 22px;
+    }
+
+    .cover-content h1 {
+        font-size: 29px;
+    }
+
+    .section-heading h2 {
+        font-size: 23px;
+    }
+
+    .instructor-card {
+        flex-direction: column;
+    }
+}
+
+.instructor-avatar {
+    width: 76px;
+    height: 76px;
+    min-width: 76px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #E6E0F0;
+    color: #6F8FD6;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.instructor-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.instructor-avatar.has-initial {
+    background: #E6E0F0;
+    color: #6F8FD6;
+}

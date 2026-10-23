@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore workshop details and register with ATHAR.">
+
+    <title>Workshop Details | ATHAR</title>
+
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/workshop-details.css">
+
+    <script src="assets/js/workshop-details.js" defer></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">ATHAR<span>.</span></a>
+
+            <button class="menu-toggle" id="menuToggle"
+                    aria-label="Open navigation" aria-expanded="false">
+                ☰
+            </button>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="workshops.html" class="active">Workshops</a>
+                <a href="my-registrations.html">My Registrations</a>
+                <a href="login.html" class="nav-login">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="details-container">
+
+            <a href="workshops.html" class="back-link">
+                ← Back to workshops
+            </a>
+
+            <div id="pageMessage" class="page-message">
+                Loading workshop details...
+            </div>
+
+            <div id="workshopContent" hidden>
+
+                <!-- Cover -->
+                <section class="workshop-cover">
+                    <img id="coverImage"
+                         src="assets/images/default-workshop.jpg"
+                         alt="">
+
+                    <div class="cover-overlay"></div>
+
+                    <div class="cover-content">
+                        <span id="coverType" class="cover-badge">Workshop</span>
+                        <h1 id="workshopTitle">Workshop title</h1>
+                        <p id="coverDescription"></p>
+                    </div>
+                </section>
+
+                <!-- Main content + registration -->
+                <div class="details-layout">
+
+                    <div class="details-main">
+
+                        <section class="info-section">
+                            <div class="section-heading">
+                                <span class="section-kicker">THE EXPERIENCE</span>
+                                <h2>Workshop Overview</h2>
+                            </div>
+
+                            <p id="workshopDescription" class="description-text"></p>
+
+                            <div class="info-grid">
+                                <article class="info-card">
+                                    <span class="info-icon">▦</span>
+                                    <div>
+                                        <span class="info-label">Date</span>
+                                        <strong id="workshopDate">—</strong>
+                                    </div>
+                                </article>
+
+                                <article class="info-card">
+                                    <span class="info-icon">◷</span>
+                                    <div>
+                                        <span class="info-label">Time</span>
+                                        <strong id="workshopTime">—</strong>
+                                    </div>
+                                </article>
+
+                                <article class="info-card">
+                                    <span class="info-icon">⌖</span>
+                                    <div>
+                                        <span class="info-label">Location</span>
+                                        <strong id="workshopLocation">—</strong>
+                                    </div>
+                                </article>
+
+                                <article class="info-card">
+                                    <span class="info-icon">♧</span>
+                                    <div>
+                                        <span class="info-label">Capacity</span>
+                                        <strong id="workshopCapacity">—</strong>
+                                    </div>
+                                </article>
+                            </div>
+                        </section>
+
+                        <!-- Instructor -->
+                        <section class="instructor-section">
+                            <div class="section-heading">
+                                <span class="section-kicker">YOUR MENTOR</span>
+                                <h2>Meet the Instructor</h2>
+                            </div>
+
+                            <article class="instructor-card">
+                                <div class="instructor-avatar" id="instructorAvatar">
+                                    A
+                                </div>
+
+                                <div class="instructor-info">
+                                    <h3 id="instructorName">Instructor information</h3>
+                                    <p id="instructorBio">
+                                        Instructor details will be available soon.
+                                    </p>
+                                </div>
+                            </article>
+                        </section>
+
+                    </div>
+
+                    <!-- Registration card -->
+                    <aside class="registration-card">
+                        <span class="registration-kicker">YOUR NEXT STEP</span>
+                        <h2>Ready to join?</h2>
+
+                        <p>
+                            Take the next step in your learning journey
+                            and reserve your place.
+                        </p>
+
+                        <div class="registration-divider"></div>
+
+                        <div class="registration-detail">
+                            <span>Workshop</span>
+                            <strong id="registrationTitle">—</strong>
+                        </div>
+
+                        <div class="registration-detail">
+                            <span>Format</span>
+                            <strong id="registrationType">—</strong>
+                        </div>
+
+                        <div class="registration-detail">
+                            <span>Seats</span>
+                            <strong id="registrationCapacity">—</strong>
+                        </div>
+
+                        <button id="registerButton" class="register-button" disabled>
+                            Register for Workshop
+                            <span>→</span>
+                        </button>
+
+                        <p class="registration-note" id="registrationNote">
+                            Registration options will be available soon.
+                        </p>
+                    </aside>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="currentYear"></span> ATHAR. Learn today, build tomorrow.</p>
+    </footer>
+
+</body>
+</html>

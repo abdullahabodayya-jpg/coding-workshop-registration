@@ -1,71 +1,118 @@
-const workshops = [
+
+const API_URL =
+    "http://localhost/code%20registration%20workshop%20website/athar/backend/api/workshops/index.php";
+const workshopThemes = [
     {
-        id: "demo-1",
-        title: "Web Development Fundamentals",
-        category: "Web Development",
-        date: "Coming soon",
-        type: "On-site",
-        description: "Start building websites with HTML, CSS, and JavaScript.",
-        capacity: "Beginner friendly",
         theme: "workshop-image-blue",
-        code: "<html>"
+        code: "</>"
     },
     {
-        id: "demo-2",
-        title: "Python for Beginners",
-        category: "Python",
-        date: "Coming soon",
-        type: "Online",
-        description: "Learn programming fundamentals through practical exercises.",
-        capacity: "Beginner friendly",
         theme: "workshop-image-lavender",
-        code: "print()"
+        code: "PHP"
     },
     {
-        id: "demo-3",
-        title: "Database Design Essentials",
-        category: "Databases",
-        date: "Coming soon",
-        type: "On-site",
-        description: "Understand tables, relationships, and SQL fundamentals.",
-        capacity: "Beginner friendly",
         theme: "workshop-image-gray",
-        code: "SELECT"
+        code: "SQL"
     },
     {
-        id: "demo-4",
-        title: "JavaScript in Practice",
-        category: "JavaScript",
-        date: "Coming soon",
-        type: "Online",
-        description: "Make web pages interactive and understand core JavaScript.",
-        capacity: "Beginner friendly",
-        theme: "workshop-image-blue",
-        code: "const x"
-    },
-    {
-        id: "demo-5",
-        title: "Cybersecurity Basics",
-        category: "Cybersecurity",
-        date: "Coming soon",
-        type: "On-site",
-        description: "Discover security principles and common digital threats.",
-        capacity: "Beginner friendly",
         theme: "workshop-image-brown",
-        code: "SECURE"
-    },
-    {
-        id: "demo-6",
-        title: "PHP and MySQL Foundations",
-        category: "Backend Development",
-        date: "Coming soon",
-        type: "Online",
-        description: "Explore server-side development and relational databases.",
-        capacity: "Beginner friendly",
-        theme: "workshop-image-lavender",
-        code: "<?php"
+        code: "JS"
     }
 ];
+
+function formatWorkshopDate(startAt, endAt) {
+    if (!startAt) {
+        return "Date to be announced";
+    }
+
+    const startDate = new Date(startAt.replace(" ", "T"));
+
+    if (Number.isNaN(startDate.getTime())) {
+        return "Date to be announced";
+    }
+
+    const dateOptions = {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+    };
+
+    const formattedDate = startDate.toLocaleDateString(
+        "en-US",
+        dateOptions
+    );
+
+    if (!endAt) {
+        return formattedDate;
+    }
+
+    const endDate = new Date(endAt.replace(" ", "T"));
+
+    if (
+        Number.isNaN(endDate.getTime()) ||
+        startDate.toDateString() !== endDate.toDateString()
+    ) {
+        return formattedDate;
+    }
+
+    const timeOptions = {
+        hour: "numeric",
+        minute: "2-digit"
+    };
+
+    const startTime = startDate.toLocaleTimeString(
+        "en-US",
+        timeOptions
+    );
+
+    const endTime = endDate.toLocaleTimeString(
+        "en-US",
+        timeOptions
+    );
+
+    return `${formattedDate} · ${startTime} - ${endTime}`;
+}
+
+function mapWorkshop(apiWorkshop, index) {
+    const theme = workshopThemes[index % workshopThemes.length];
+
+    return {
+        id: apiWorkshop.id,
+        title: apiWorkshop.title,
+        category: getWorkshopCategory(apiWorkshop.title),
+        date: formatWorkshopDate(
+            apiWorkshop.start_at,
+            apiWorkshop.end_at
+        ),
+        type: apiWorkshop.type === "online" ? "Online" : "On-site",
+        description: apiWorkshop.description || "Workshop details coming soon.",
+        capacity: Number(apiWorkshop.capacity) > 0
+            ? `${apiWorkshop.capacity} seats`
+            : "Registration details coming soon",
+        theme: theme.theme,
+        code: theme.code,
+        imageUrl: apiWorkshop.image_url || null
+    };
+}
+
+function getWorkshopCategory(title = "") {
+    const value = title.toLowerCase();
+
+    if (value.includes("python")) return "Python";
+    if (value.includes("database") || value.includes("sql")) {
+        return "Databases";
+    }
+    if (value.includes("cybersecurity") || value.includes("security")) {
+        return "Cybersecurity";
+    }
+    if (value.includes("javascript")) return "JavaScript";
+    if (value.includes("php") || value.includes("backend")) {
+        return "Backend Development";
+    }
+    if (value.includes("web")) return "Web Development";
+
+    return "Coding Workshop";
+}
 
 function createWorkshopCard(workshop) {
     const article = document.createElement("article");
@@ -73,6 +120,19 @@ function createWorkshopCard(workshop) {
 
     const image = document.createElement("div");
     image.className = `workshop-image ${workshop.theme}`;
+
+    if (workshop.imageUrl) {
+        const img = document.createElement("img");
+        img.src = workshop.imageUrl;
+        img.alt = workshop.title;
+        img.loading = "lazy";
+
+        img.addEventListener("error", () => {
+            img.remove();
+        });
+
+        image.append(img);
+    }
 
     const code = document.createElement("span");
     code.className = "workshop-image-code";
@@ -106,7 +166,10 @@ function createWorkshopCard(workshop) {
     const link = document.createElement("a");
     link.href = `workshop-details.html?id=${encodeURIComponent(workshop.id)}`;
     link.textContent = "View details →";
-    link.setAttribute("aria-label", `View details for ${workshop.title}`);
+    link.setAttribute(
+        "aria-label",
+        `View details for ${workshop.title}`
+    );
 
     footer.append(capacity, link);
     body.append(meta, title, description, footer);
@@ -115,7 +178,23 @@ function createWorkshopCard(workshop) {
     return article;
 }
 
-function renderWorkshops() {
+function showWorkshopMessage(container, headingText, messageText) {
+    container.replaceChildren();
+
+    const emptyState = document.createElement("div");
+    emptyState.className = "workshop-empty";
+
+    const heading = document.createElement("h3");
+    heading.textContent = headingText;
+
+    const message = document.createElement("p");
+    message.textContent = messageText;
+
+    emptyState.append(heading, message);
+    container.append(emptyState);
+}
+
+function renderWorkshops(workshops) {
     const container = document.getElementById("upcomingWorkshops");
 
     if (!container) {
@@ -125,25 +204,69 @@ function renderWorkshops() {
     container.replaceChildren();
 
     if (workshops.length === 0) {
-        const emptyState = document.createElement("div");
-        emptyState.className = "workshop-empty";
-
-        const heading = document.createElement("h3");
-        heading.textContent = "No upcoming workshops yet";
-
-        const message = document.createElement("p");
-        message.textContent =
-            "Check back soon to discover new learning opportunities.";
-
-        emptyState.append(heading, message);
-        container.append(emptyState);
-
+        showWorkshopMessage(
+            container,
+            "No upcoming workshops yet",
+            "Check back soon to discover new learning opportunities."
+        );
         return;
     }
 
     workshops.slice(0, 3).forEach((workshop) => {
         container.append(createWorkshopCard(workshop));
     });
+}
+
+async function loadWorkshops() {
+    const container = document.getElementById("upcomingWorkshops");
+
+    if (!container) {
+        return;
+    }
+
+    showWorkshopMessage(
+        container,
+        "Loading workshops...",
+        "Please wait while we fetch the latest workshops."
+    );
+
+    try {
+        const response = await fetch(API_URL);
+                const responseText = await response.text();
+
+                console.log("API status:", response.status);
+                console.log("API response:", responseText);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error: ${response.status}`);
+                }
+
+                let result;
+
+                try {
+                    result = JSON.parse(responseText);
+                } catch {
+                    throw new Error(
+                        "API did not return valid JSON. Check the console response."
+                    );
+                }
+
+        if (!result.success || !Array.isArray(result.data)) {
+            throw new Error("Invalid API response.");
+        }
+
+        const workshops = result.data.map(mapWorkshop);
+        renderWorkshops(workshops);
+
+    } catch (error) {
+        console.error("Failed to load workshops:", error);
+
+        showWorkshopMessage(
+            container,
+            "Unable to load workshops",
+            "Please try again later."
+        );
+    }
 }
 
 function setupMobileNavigation() {
@@ -193,7 +316,7 @@ function setupCurrentYear() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    renderWorkshops();
+    loadWorkshops();
     setupMobileNavigation();
     setupCurrentYear();
 });

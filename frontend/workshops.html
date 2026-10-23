@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Workshops | ATHAR</title>
+
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/workshops.css">
+
+    <script src="assets/js/workshops.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar container">
+            <a class="logo" href="index.html">ATHAR</a>
+
+            <button
+                id="menuToggle"
+                class="menu-toggle"
+                aria-label="Open navigation"
+                aria-expanded="false"
+            >☰</button>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="workshops.html" aria-current="page">Workshops</a>
+                <a href="login.html">Login</a>
+                <a href="register.html" class="btn btn-primary">Join ATHAR</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="workshops-hero">
+            <div class="container">
+                <p class="eyebrow">LEARN SOMETHING NEW</p>
+                <h1>Explore all workshops</h1>
+                <p>
+                    Discover coding workshops, build practical skills,
+                    and take the next step in your learning journey.
+                </p>
+            </div>
+        </section>
+
+        <section class="all-workshops-section container">
+            <div class="workshops-toolbar">
+                <div class="search-wrapper">
+                    <label for="workshopSearch">Search workshops</label>
+                    <input
+                        type="search"
+                        id="workshopSearch"
+                        placeholder="Search by title or description..."
+                    >
+                </div>
+
+                <div class="filter-wrapper">
+                    <label for="workshopType">Workshop format</label>
+                    <select id="workshopType">
+                        <option value="all">All formats</option>
+                        <option value="onsite">On-site</option>
+                        <option value="online">Online</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="results-heading">
+                <h2>Available workshops</h2>
+                <p id="workshopCount" aria-live="polite"></p>
+            </div>
+
+            <div
+                id="allWorkshops"
+                class="workshops-grid"
+                aria-live="polite"
+            >
+                <p class="workshop-message">Loading workshops...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <a class="logo" href="index.html">ATHAR</a>
+            <p>Learn. Practice. Grow.</p>
+            <p>© <span id="currentYear"></span> ATHAR. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
