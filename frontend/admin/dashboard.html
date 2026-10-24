@@ -4,20 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>ATHAR | Admin Dashboard</title>
+
     <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../assets/css/admin-dashboard.css">
+
     <script src="../assets/js/admin-auth.js" defer></script>
-    <script src="../assets/js/admin.js" defer></script> 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="../assets/js/admin.js" defer></script>
 </head>
-<body hidden>
+
+<body class="dashboard-page" hidden>
     <header class="admin-header">
-        <a class="brand" href="dashboard.html">
-            ATHAR <span>ADMIN</span>
+        <a class="brand" href="dashboard.html" aria-label="ATHAR Admin Home">
+            <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="12" fill="#6F4E37"/>
+                    <path d="M20 8L30 30H24.5L20 19.2L15.5 30H10L20 8Z"
+                          fill="#FFFFFF"/>
+                    <circle cx="20" cy="30" r="2" fill="#B9A7CC"/>
+                </svg>
+            </span>
+            <span class="brand-copy">
+                <span class="brand-name">ATHAR</span>
+                <span class="brand-label">ADMIN PANEL</span>
+            </span>
         </a>
 
-        <nav>
-            <a class="active" href="dashboard.html">Dashboard</a>
-            <a href="support.html">Support Inbox</a>
+        <nav class="admin-nav" aria-label="Admin navigation">
+            <a class="active" href="dashboard.html" aria-current="page">
+                Dashboard
+            </a>
+            <a href="create-workshop.html">Add workshop</a>
+            <a href="workshops.html">Workshops</a>
+            <a href="users.html">Users</a>
+            <a href="support.html">Support inbox</a>
         </nav>
 
         <button id="logoutBtn" class="button button-light" type="button">
@@ -25,40 +47,199 @@
         </button>
     </header>
 
-    <main class="admin-main">
-        <section class="page-heading">
+    <main class="admin-main dashboard-main">
+        <section class="page-heading dashboard-heading">
             <div>
                 <p class="eyebrow">ADMINISTRATION</p>
-                <h1>Dashboard</h1>
-                <p>Welcome to the ATHAR administration panel.</p>
+                <h1>Dashboard overview</h1>
+                <p>Monitor ATHAR's community, workshops and activity.</p>
+            </div>
+
+            <button id="refreshDashboard" class="button" type="button">
+                Refresh data
+            </button>
+        </section>
+
+        <section class="stats-grid" aria-label="Platform statistics">
+            <article class="stat-card">
+                <span>Total Users</span>
+                <strong id="totalUsers">—</strong>
+                <small>Registered members</small>
+            </article>
+
+            <article class="stat-card">
+                <span>Total Workshops</span>
+                <strong id="totalWorkshops">—</strong>
+                <small>All workshop statuses</small>
+            </article>
+
+            <article class="stat-card">
+                <span>Total Registrations</span>
+                <strong id="totalRegistrations">—</strong>
+                <small>Workshop sign-ups</small>
+            </article>
+
+            <article class="stat-card">
+                <span>Total Instructors</span>
+                <strong id="totalInstructors">—</strong>
+                <small>Instructor profiles</small>
+            </article>
+
+            <article class="stat-card">
+                <span>Open Messages</span>
+                <strong id="openMessages">—</strong>
+                <small>Awaiting review</small>
+            </article>
+
+            <article class="stat-card">
+                <span>Pending Messages</span>
+                <strong id="pendingMessages">—</strong>
+                <small>In progress</small>
+            </article>
+        </section>
+
+        <section class="quick-access" aria-labelledby="quickAccessTitle">
+            <div class="quick-access-heading">
+                <div>
+                    <p class="eyebrow">SHORTCUTS</p>
+                    <h2 id="quickAccessTitle">Quick access</h2>
+                    <p>Jump directly to a common admin task.</p>
+                </div>
+            </div>
+
+            <div class="quick-access-grid">
+                <a class="quick-access-card" href="create-workshop.html">
+                    <span class="quick-access-icon icon-brown" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <rect x="4" y="5" width="16" height="15" rx="3"/>
+                            <path d="M8 3V7M16 3V7M4 10H20M12 13V17M10 15H14"/>
+                        </svg>
+                    </span>
+                    <span class="quick-access-copy">
+                        <strong>Add workshop</strong>
+                        <small>Create a new workshop</small>
+                    </span>
+                    <span class="quick-access-arrow" aria-hidden="true">↗</span>
+                </a>
+
+                <a class="quick-access-card" href="workshops.html">
+                    <span class="quick-access-icon icon-sage" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <rect x="3.5" y="4" width="17" height="16" rx="3"/>
+                            <path d="M8 8H16M8 12H16M8 16H13"/>
+                        </svg>
+                    </span>
+                    <span class="quick-access-copy">
+                        <strong>Manage workshops</strong>
+                        <small>Edit or remove workshops</small>
+                    </span>
+                    <span class="quick-access-arrow" aria-hidden="true">↗</span>
+                </a>
+
+                <a class="quick-access-card" href="users.html">
+                    <span class="quick-access-icon icon-lavender" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <circle cx="9" cy="8" r="3.5"/>
+                            <path d="M2.8 20C3.2 16.5 5.3 14.5 9 14.5C12.7 14.5 14.8 16.5 15.2 20M16 5.5C18 6 19 7.3 19 9S18 12 16.5 12.5M17 15C19.5 15.4 20.8 17 21.2 19"/>
+                        </svg>
+                    </span>
+                    <span class="quick-access-copy">
+                        <strong>Manage users</strong>
+                        <small>Review member accounts</small>
+                    </span>
+                    <span class="quick-access-arrow" aria-hidden="true">↗</span>
+                </a>
+
+                <a class="quick-access-card" href="support.html">
+                    <span class="quick-access-icon icon-rose" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H17.5A2.5 2.5 0 0 1 20 5.5V14A2.5 2.5 0 0 1 17.5 16.5H10L5 21V16.1A2.5 2.5 0 0 1 4 14V5.5Z"/>
+                            <path d="M8 8H16M8 12H14"/>
+                        </svg>
+                    </span>
+                    <span class="quick-access-copy">
+                        <strong>Support inbox</strong>
+                        <small>Review contact messages</small>
+                    </span>
+                    <span class="quick-access-arrow" aria-hidden="true">↗</span>
+                </a>
             </div>
         </section>
 
-        <section class="stats-grid">
-            <article class="stat-card">
-                <span>Support Inbox</span>
-                <strong>Manage</strong>
-                <a href="support.html">Open messages →</a>
-            </article>
+        <section class="dashboard-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">ACTIVITY</p>
+                    <h2>Registration insights</h2>
+                </div>
+                <p>Understand participation over time and across workshops.</p>
+            </div>
 
-            <article class="stat-card">
-                <span>Workshops</span>
-                <strong>Coming next</strong>
-                <p>Workshop management will be added next.</p>
-            </article>
+            <div class="chart-group chart-group-activity">
+                <article class="chart-card">
+                    <div class="chart-card-heading">
+                        <div>
+                            <h3>Monthly registrations</h3>
+                            <p>Registration activity over the last six months</p>
+                        </div>
+                    </div>
+                    <div class="chart-container chart-container-large">
+                        <canvas id="monthlyRegistrationsChart"></canvas>
+                    </div>
+                </article>
 
-            <article class="stat-card">
-                <span>Registrations</span>
-                <strong>Coming next</strong>
-                <p>Registration statistics will be added next.</p>
-            </article>
-
-            <article class="stat-card">
-                <span>Users</span>
-                <strong>Coming next</strong>
-                <p>User statistics will be added next.</p>
-            </article>
+                <article class="chart-card">
+                    <div class="chart-card-heading">
+                        <div>
+                            <h3>Popular workshops</h3>
+                            <p>Confirmed registrations by workshop</p>
+                        </div>
+                    </div>
+                    <div class="chart-container chart-container-large">
+                        <canvas id="workshopRegistrationsChart"></canvas>
+                    </div>
+                </article>
+            </div>
         </section>
+
+        <section class="dashboard-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">COMMUNITY</p>
+                    <h2>People & workshops</h2>
+                </div>
+                <p>A snapshot of the community and workshop lifecycle.</p>
+            </div>
+
+            <div class="chart-group chart-group-overview">
+                <article class="chart-card">
+                    <div class="chart-card-heading">
+                        <div>
+                            <h3>Gender distribution</h3>
+                            <p>Breakdown of registered users</p>
+                        </div>
+                    </div>
+                    <div class="chart-container chart-container-compact">
+                        <canvas id="genderChart"></canvas>
+                    </div>
+                </article>
+
+                <article class="chart-card">
+                    <div class="chart-card-heading">
+                        <div>
+                            <h3>Workshop status</h3>
+                            <p>Distribution across all workshop stages</p>
+                        </div>
+                    </div>
+                    <div class="chart-container chart-container-compact">
+                        <canvas id="workshopStatusChart"></canvas>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <p id="dashboardMessage" class="dashboard-message"
+           role="status" aria-live="polite"></p>
     </main>
 </body>
 </html>

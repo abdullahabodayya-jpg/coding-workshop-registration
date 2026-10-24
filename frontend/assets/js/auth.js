@@ -339,7 +339,15 @@ function setupAuthForms() {
 
                 showMessage(message, result.message || "Login successful.", "success");
 
+                
                 setTimeout(() => {
+                    const user = result.data;
+
+                    if (user?.role === "admin") {
+                        window.location.href = "admin/dashboard.html";
+                        return;
+                    }
+
                     const params = new URLSearchParams(window.location.search);
                     const returnTo = params.get("returnTo");
 
@@ -349,9 +357,10 @@ function setupAuthForms() {
                     ) {
                         window.location.href = returnTo;
                     } else {
-                        window.location.href = "workshops.html";
+                        window.location.href = "index.html";
                     }
                 }, 300);
+
             } catch (error) {
                 showMessage(message, error.message || "Unable to connect to the server.", "error");
             } finally {

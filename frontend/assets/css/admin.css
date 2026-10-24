@@ -427,3 +427,140 @@ textarea {
         font-size: 1.6rem;
     }
 }
+
+/* Shared ATHAR admin identity and navigation */
+
+.admin-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    min-height: 76px;
+    padding: 12px clamp(18px, 4vw, 56px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E9E3DC;
+    box-shadow: 0 4px 18px rgba(94, 69, 53, 0.035);
+}
+
+.admin-header .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    flex-shrink: 0;
+    color: #5E4535;
+    text-decoration: none;
+    letter-spacing: 0;
+}
+
+.brand-mark,
+.brand-mark svg {
+    display: block;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+}
+
+.admin-header .brand-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.admin-header .brand-name {
+    display: block;
+    color: #5E4535;
+    font-family: "Manrope", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: 1px;
+}
+
+.admin-header .brand-label {
+    display: block;
+    color: #89837D;
+    font-size: 0.61rem;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+    line-height: 1.4;
+}
+
+.admin-header .admin-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex: 1;
+    min-width: 0;
+}
+
+.admin-header .admin-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 9px 12px;
+    border-radius: 9px;
+    color: #77736F;
+    font-size: 0.84rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.admin-header .admin-nav a:hover,
+.admin-header .admin-nav a.active {
+    background: #F4EFE8;
+    color: #5E4535;
+}
+
+.admin-header .button-light {
+    flex-shrink: 0;
+    border: 1px solid #E9E3DC;
+    background: #F4EFE8;
+    color: #5E4535;
+}
+
+.admin-header .button-light:hover {
+    background: #EDE4DA;
+    opacity: 1;
+}
+
+@media (max-width: 1000px) {
+    .admin-header {
+        flex-wrap: wrap;
+        gap: 12px 18px;
+    }
+
+    .admin-header .admin-nav {
+        order: 3;
+        flex-basis: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 2px;
+    }
+}
+
+@media (max-width: 560px) {
+    .admin-header {
+        padding: 12px 14px;
+    }
+
+    .brand-mark,
+    .brand-mark svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    .admin-header .brand-name {
+        font-size: 1.05rem;
+    }
+
+    .admin-header .admin-nav a {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+}
