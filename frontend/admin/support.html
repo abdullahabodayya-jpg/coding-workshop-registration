@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATHAR | Support Inbox</title>
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <script src="../assets/js/admin-auth.js" defer></script>
+    <script src="../assets/js/support.js" defer></script>
+</head>
+<body hidden>
+    <header class="admin-header">
+        <a class="brand" href="dashboard.html">ATHAR <span>ADMIN</span></a>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a class="active" href="support.html">Support Inbox</a>
+        </nav>
+        <button id="logoutBtn" class="button button-light" type="button">
+            Log out
+        </button>
+    </header>
+
+    <main class="admin-main">
+        <section class="page-heading">
+            <div>
+                <p class="eyebrow">CUSTOMER CARE</p>
+                <h1>Support Inbox</h1>
+                <p>Manage messages submitted through the ATHAR contact form.</p>
+            </div>
+            <button id="refreshBtn" class="button button-primary" type="button">
+                Refresh messages
+            </button>
+        </section>
+
+        <section class="stats-grid" aria-label="Message statistics">
+            <article class="stat-card">
+                <span>All messages</span>
+                <strong id="totalCount">—</strong>
+            </article>
+            <article class="stat-card">
+                <span>Open</span>
+                <strong id="openCount">—</strong>
+            </article>
+            <article class="stat-card">
+                <span>In progress</span>
+                <strong id="progressCount">—</strong>
+            </article>
+            <article class="stat-card">
+                <span>Resolved</span>
+                <strong id="resolvedCount">—</strong>
+            </article>
+        </section>
+
+        <section class="inbox-layout">
+            <div class="panel messages-panel">
+                <div class="panel-heading">
+                    <h2>Messages</h2>
+                    <label class="filter-label" for="statusFilter">Filter</label>
+                    <select id="statusFilter">
+                        <option value="all">All messages</option>
+                        <option value="open">Open</option>
+                        <option value="in_progress">In progress</option>
+                        <option value="resolved">Resolved</option>
+                    </select>
+                </div>
+
+                <p id="listMessage" class="notice" role="status">
+                    Loading messages...
+                </p>
+                <div id="messageList" class="message-list"></div>
+            </div>
+
+            <div class="panel details-panel">
+                <div id="emptyState" class="empty-state">
+                    <span class="empty-icon">✉</span>
+                    <h2>Select a message</h2>
+                    <p>Choose a message from the list to view its details.</p>
+                </div>
+
+                <div id="messageDetails" hidden>
+                    <div class="detail-top">
+                        <div>
+                            <p class="eyebrow">MESSAGE DETAILS</p>
+                            <h2 id="detailSubject"></h2>
+                        </div>
+                        <span id="detailStatus" class="status-badge"></span>
+                    </div>
+
+                    <dl class="sender-details">
+                        <div>
+                            <dt>From</dt>
+                            <dd id="detailName"></dd>
+                        </div>
+                        <div>
+                            <dt>Email</dt>
+                            <dd id="detailEmail"></dd>
+                        </div>
+                        <div>
+                            <dt>Received</dt>
+                            <dd id="detailDate"></dd>
+                        </div>
+                    </dl>
+
+                    <div class="original-message">
+                        <h3>Message</h3>
+                        <p id="detailMessage"></p>
+                    </div>
+
+                    <form id="replyForm">
+                        <label for="adminReply">Admin reply</label>
+                        <textarea
+                            id="adminReply"
+                            rows="6"
+                            maxlength="5000"
+                            placeholder="Write a helpful response..."
+                        ></textarea>
+
+                        <label for="messageStatus">Message status</label>
+                        <select id="messageStatus" required>
+                            <option value="open">Open</option>
+                            <option value="in_progress">In progress</option>
+                            <option value="resolved">Resolved</option>
+                        </select>
+
+                        <p class="form-hint">
+                            Resolving a message requires a reply. Email delivery
+                            is not enabled yet.
+                        </p>
+
+                        <p id="formMessage" class="notice" role="status"></p>
+
+                        <button id="saveBtn" class="button button-primary" type="submit">
+                            Save changes
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

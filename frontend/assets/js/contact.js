@@ -1,14 +1,7 @@
-
 const contactForm = document.getElementById("contactForm");
 const contactMessage = document.getElementById("contactMessage");
 const messageCount = document.getElementById("messageCount");
 const formMessage = document.getElementById("formMessage");
-const currentYear = document.getElementById("currentYear");
-
-// Footer year
-if (currentYear) {
-    currentYear.textContent = new Date().getFullYear();
-}
 
 // Live character counter
 if (contactMessage && messageCount) {
@@ -17,17 +10,16 @@ if (contactMessage && messageCount) {
     });
 }
 
-// Show a form message
 function showFormMessage(message, type) {
+    if (!formMessage) return;
+
     formMessage.textContent = message;
     formMessage.className = `form-message ${type}`;
     formMessage.hidden = false;
 }
 
-// Client-side validation only.
-// This does not send or store messages.
 if (contactForm) {
-    contactForm.addEventListener("submit", (event) => {
+    contactForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
         if (!contactForm.checkValidity()) {
@@ -35,9 +27,18 @@ if (contactForm) {
             return;
         }
 
-        const name = document.getElementById("contactName").value.trim();
-        const email = document.getElementById("contactEmail").value.trim();
-        const subject = document.getElementById("contactSubject").value;
+        const name = document
+            .getElementById("contactName")
+            .value.trim();
+
+        const email = document
+            .getElementById("contactEmail")
+            .value.trim();
+
+        const subject = document
+            .getElementById("contactSubject")
+            .value;
+
         const message = contactMessage.value.trim();
 
         if (name.length < 2) {
@@ -45,7 +46,7 @@ if (contactForm) {
             return;
         }
 
-        if (!email || !email.includes("@")) {
+        if (!email || email.length > 255) {
             showFormMessage("Please enter a valid email address.", "error");
             return;
         }
@@ -55,18 +56,65 @@ if (contactForm) {
             return;
         }
 
-        if (message.length < 10) {
+        if (message.length < 10 || message.length > 5000) {
             showFormMessage(
-                "Your message must contain at least 10 characters.",
+                "Your message must contain between 10 and 5000 characters.",
                 "error"
             );
             return;
         }
 
-        showFormMessage(
-            "Your message passed validation, but it has not been sent. " +
-            "The form needs a backend connection before messages can be delivered.",
-            "success"
+        const submitButton = contactForm.querySelector(
+            '[type="submit"]'
         );
+
+        if (submitButton) {
+            submitButton.disabled = true;
+        }
+
+        try {
+            const response = await fetch(
+                "http://localhost/code%20registration%20workshop%20website/athar/backend/api/contact/submit.php",
+                {
+                    method: "POST",
+                    credentials: "include",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        subject,
+                        message
+                    })
+                }
+            );
+
+            const result = await response.json();
+
+            if (!response.ok || !result.success) {
+                throw new Error(
+                    result.message || "Unable to send your message."
+                );
+            }
+
+            showFormMessage(result.message, "success");
+            contactForm.reset();
+
+            if (messageCount) {
+                messageCount.textContent = "0";
+            }
+
+        } catch (error) {
+            showFormMessage(
+                error.message ||
+                    "A network error occurred. Please try again.",
+                "error"
+            );
+        } finally {
+            if (submitButton) {
+                submitButton.disabled = false;
+            }
+        }
     });
 }

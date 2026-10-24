@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Contact Update</title>
+</head>
+<body>
+    <h2>Test Admin Contact API</h2>
+    <button id="testBtn">Update Contact Message</button>
+    <pre id="result"></pre>
+
+    <script>
+        document.getElementById("testBtn").addEventListener("click", async () => {
+            const result = document.getElementById("result");
+            result.textContent = "Sending request...";
+
+            try {
+                const response = await fetch(
+                    "http://localhost/code%20registration%20workshop%20website/athar/backend/api/contact/update.php",
+                    {
+                        method: "POST",
+                        credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            id: "760fdbe7-cf9b-11f1-83b2-e02e0b4c586e",
+                            status: "resolved",
+                            admin_reply: "We are investigating the workshop creation issue. Please try again shortly."
+                        })
+                    }
+                );
+
+                const data = await response.json();
+
+                result.textContent = JSON.stringify({
+                    http_status: response.status,
+                    ...data
+                }, null, 2);
+            } catch (error) {
+                result.textContent = "Request failed: " + error.message;
+            }
+        });
+    </script>
+</body>
+</html>
