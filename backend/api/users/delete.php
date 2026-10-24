@@ -46,10 +46,7 @@ try {
         ]);
     }
 
-    /*
-     * Check workshop registrations before deleting.
-     * Assumes registrations.user_id references users.id.
-     */
+   
     $check = $pdo->prepare("
         SELECT COUNT(*)
         FROM registrations
@@ -65,11 +62,7 @@ try {
         ]);
     }
 
-    /*
-     * Delete only after confirming that no registrations exist.
-     * Add checks for other tables that reference users before
-     * enabling deletion in your actual database.
-     */
+    
     $delete = $pdo->prepare("
         DELETE FROM users
         WHERE id = :id AND role <> 'admin'

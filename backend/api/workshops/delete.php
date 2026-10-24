@@ -36,7 +36,6 @@ try {
         ]);
     }
 
-    // Do not delete registrations automatically.
     $registrationCheck = $pdo->prepare("
         SELECT 1
         FROM registrations

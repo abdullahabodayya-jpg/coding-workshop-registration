@@ -12,13 +12,12 @@ class WorkshopController
         $this->repository = $repository;
     }
 
-    // Get all published workshops
+    
     public function index(): array
     {
         return $this->repository->getPublishedWorkshops();
     }
 
-    // Get one published workshop by ID
     public function show(string $id): array|false
     {
         return $this->repository->getPublishedWorkshopById($id);

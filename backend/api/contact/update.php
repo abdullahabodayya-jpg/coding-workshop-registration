@@ -38,7 +38,7 @@ try {
     $database = new Database();
     $pdo = $database->connect();
 
-    // التأكد من وجود الرسالة
+
     $check = $pdo->prepare("
         SELECT id, status
         FROM contact_messages

@@ -9,7 +9,6 @@ class RegistrationRepository
         $this->pdo = $pdo;
     }
 
-    // Check whether the user already has a registration
     public function findByUserAndWorkshop(
         string $userId,
         string $workshopId
@@ -31,7 +30,7 @@ class RegistrationRepository
         return $stmt->fetch();
     }
 
-    // Create a new registration
+
     public function create(
         string $userId,
         string $workshopId
@@ -49,7 +48,6 @@ class RegistrationRepository
         ]);
     }
 
-    // Reactivate a previously cancelled registration
     public function reactivate(string $registrationId): bool
     {
         $sql = "
@@ -62,7 +60,7 @@ class RegistrationRepository
         return $stmt->execute(["id" => $registrationId]);
     }
 
-    // Count confirmed registrations
+
     public function countConfirmed(string $workshopId): int
     {
         $sql = "

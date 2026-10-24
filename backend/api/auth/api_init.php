@@ -41,7 +41,7 @@ if (
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_set_cookie_params([
         "httponly" => true,
-        "secure" => false, // Local XAMPP over HTTP only.
+        "secure" => false, 
         "samesite" => "Lax",
         "path" => "/"
     ]);

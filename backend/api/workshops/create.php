@@ -46,7 +46,7 @@ try {
     $capacity = $payload["capacity"] ?? null;
     $instructorIds = $payload["instructor_ids"] ?? [];
 
-    // Required fields.
+    
     if ($title === "" || mb_strlen($title) > 200) {
         jsonResponse(422, [
             "success" => false,
@@ -75,7 +75,7 @@ try {
         ]);
     }
 
-    // Location validation.
+
     if (mb_strlen($location) > 500) {
         jsonResponse(422, [
             "success" => false,
@@ -90,7 +90,6 @@ try {
         ]);
     }
 
-    // Optional capacity.
     if ($capacity === "") {
         $capacity = null;
     }
@@ -108,7 +107,6 @@ try {
         ]);
     }
 
-    // Date and time validation.
     if (
         ($startAt === null) !== ($endAt === null) ||
         ($startAt === "" && $endAt !== "") ||
@@ -180,7 +178,7 @@ try {
         ]);
     }
 
-    // Optional URLs.
+  
     if (
         mb_strlen($imageUrl) > 500 ||
         (
@@ -201,7 +199,6 @@ try {
         ]);
     }
 
-    // Validate instructor IDs.
     if (!is_array($instructorIds)) {
         jsonResponse(422, [
             "success" => false,
@@ -238,13 +235,12 @@ try {
         ]);
     }
 
-    // Connect to the database.
+
     $database = new Database();
     $pdo = $database->connect();
 
     $pdo->beginTransaction();
 
-    // Verify that all selected instructors exist.
     if (count($instructorIds) > 0) {
         $placeholders = implode(
             ", ",
@@ -271,14 +267,12 @@ try {
         }
     }
 
-    // Generate the UUID explicitly so we know the new workshop ID.
     $workshopId = $pdo->query("SELECT UUID()")->fetchColumn();
 
     if (!is_string($workshopId) || $workshopId === "") {
         throw new RuntimeException("Could not generate a workshop UUID.");
     }
 
-    // Insert the workshop.
     $insertWorkshop = $pdo->prepare("
         INSERT INTO workshops (
             id,
@@ -321,7 +315,6 @@ try {
         ":status" => $status
     ]);
 
-    // Attach the selected instructors to the workshop.
     if (count($instructorIds) > 0) {
         $attachInstructor = $pdo->prepare("
             INSERT INTO workshop_instructors (
@@ -341,7 +334,6 @@ try {
         }
     }
 
-    // Commit only after the workshop and its instructor links are saved.
     $pdo->commit();
 
     jsonResponse(201, [

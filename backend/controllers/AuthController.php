@@ -119,7 +119,6 @@ class AuthController
         try {
             $this->users->create($user);
         } catch (PDOException $e) {
-            // MySQL duplicate-key error; protects against concurrent requests.
             if ($e->getCode() === "23000") {
                 return [
                     "status" => 409,

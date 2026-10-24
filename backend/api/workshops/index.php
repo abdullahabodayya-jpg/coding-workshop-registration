@@ -26,7 +26,6 @@ try {
     $repository = new WorkshopRepository($pdo);
     $controller = new WorkshopController($repository);
 
-    // If an ID is provided, return one workshop
     if (isset($_GET["id"])) {
         $id = trim($_GET["id"]);
 
@@ -62,7 +61,6 @@ try {
         exit;
     }
 
-    // Otherwise, return all published workshops
     $workshops = $controller->index();
 
     echo json_encode([

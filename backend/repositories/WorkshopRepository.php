@@ -12,7 +12,6 @@ class WorkshopRepository
         $this->pdo = $pdo;
     }
 
-    // Get all published workshops
     public function getPublishedWorkshops(): array
     {
         $sql = "
@@ -40,7 +39,6 @@ class WorkshopRepository
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Get one published workshop with its instructor
     public function getPublishedWorkshopById(string $id): array|false
     {
         $sql = "

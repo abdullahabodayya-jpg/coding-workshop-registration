@@ -10,7 +10,6 @@ class UserRepository
         $this->pdo = $pdo;
     }
 
-    // Find a user by email for login and registration.
     public function findByEmail(string $email): array|false
     {
         $sql = "
@@ -26,7 +25,6 @@ class UserRepository
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Create a new user account.
     public function create(array $data): bool
     {
         $sql = "
@@ -65,7 +63,6 @@ class UserRepository
         ]);
     }
 
-    // Get profile data without exposing the password hash.
     public function getById(string $id): array|false
     {
         $sql = "
@@ -92,7 +89,6 @@ class UserRepository
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Update profile information.
     public function update(string $id, array $data): bool
     {
         $sql = "
@@ -122,7 +118,6 @@ class UserRepository
         ]);
     }
 
-    // Check whether another user already uses this email.
     public function emailExists(
         string $email,
         string $excludeUserId

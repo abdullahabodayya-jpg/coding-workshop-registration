@@ -23,7 +23,7 @@ try {
     $database = new Database();
     $pdo = $database->connect();
 
-    // Main statistics
+    
     $stats = $pdo->query("
             SELECT
                 (SELECT COUNT(*) FROM users)
@@ -48,7 +48,7 @@ try {
                 WHERE status = 'in_progress')
                     AS pending_messages
         ")->fetch(PDO::FETCH_ASSOC);
-    // Gender distribution
+    
     $genderRows = $pdo->query("
         SELECT gender, COUNT(*) AS total
         FROM users
@@ -64,7 +64,7 @@ try {
         $gender[$row["gender"]] = (int) $row["total"];
     }
 
-    // Workshop statuses
+    
     $workshopRows = $pdo->query("
         SELECT status, COUNT(*) AS total
         FROM workshops
@@ -82,7 +82,7 @@ try {
         $workshopStatuses[$row["status"]] = (int) $row["total"];
     }
 
-    // Registrations per workshop (top 8)
+
     $registrationsByWorkshop = $pdo->query("
         SELECT
             w.id,
@@ -97,8 +97,6 @@ try {
         LIMIT 8
     ")->fetchAll();
 
-    // Monthly registrations for the last 6 months,
-    // including months with zero registrations.
     $monthlyStatement = $pdo->query("
         SELECT
             DATE_FORMAT(months.month_start, '%Y-%m') AS month_key,
@@ -131,7 +129,7 @@ try {
 
     $monthlyRegistrations = $monthlyStatement->fetchAll();
 
-    // Recent messages summary
+    
     $messageStatusRows = $pdo->query("
         SELECT status, COUNT(*) AS total
         FROM contact_messages

@@ -26,8 +26,6 @@ class RegistrationController
         $this->pdo->beginTransaction();
 
         try {
-            // Confirm that the workshop exists and is published.
-            // Lock its row while checking available seats.
             $stmt = $this->pdo->prepare("
                 SELECT id, capacity
                 FROM workshops
@@ -99,65 +97,65 @@ class RegistrationController
     }
 
     public function getStatus(
-    string $userId,
-    string $workshopId
-): array {
-    $stmt = $this->pdo->prepare("
-        SELECT capacity
-        FROM workshops
-        WHERE id = :id
-          AND status = 'published'
-        LIMIT 1
-    ");
+            string $userId,
+            string $workshopId
+        ): array {
+            $stmt = $this->pdo->prepare("
+                SELECT capacity
+                FROM workshops
+                WHERE id = :id
+                AND status = 'published'
+                LIMIT 1
+            ");
 
-    $stmt->execute(["id" => $workshopId]);
-    $workshop = $stmt->fetch(PDO::FETCH_ASSOC);
+            $stmt->execute(["id" => $workshopId]);
+            $workshop = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if (!$workshop) {
-        return [
-            "status" => 404,
-            "message" => "Workshop not found."
-        ];
-    }
+            if (!$workshop) {
+                return [
+                    "status" => 404,
+                    "message" => "Workshop not found."
+                ];
+            }
 
-    $registered = $this->registrations->findByUserAndWorkshop(
-        $userId,
-        $workshopId
-    );
+            $registered = $this->registrations->findByUserAndWorkshop(
+                $userId,
+                $workshopId
+            );
 
-    $confirmedCount = $this->registrations->countConfirmed($workshopId);
-    $capacity = (int) $workshop["capacity"];
+            $confirmedCount = $this->registrations->countConfirmed($workshopId);
+            $capacity = (int) $workshop["capacity"];
 
-    return [
-        "status" => 200,
-        "registered" => $registered !== false
-            && $registered["status"] === "confirmed",
-        "capacity" => $capacity,
-        "remaining_seats" => max(0, $capacity - $confirmedCount)
-    ];
-}
+            return [
+                "status" => 200,
+                "registered" => $registered !== false
+                    && $registered["status"] === "confirmed",
+                "capacity" => $capacity,
+                "remaining_seats" => max(0, $capacity - $confirmedCount)
+            ];
+        }
 
-public function cancelRegistration(
-    string $userId,
-    string $workshopId
-): array {
-    $existing = $this->registrations->findByUserAndWorkshop(
-        $userId,
-        $workshopId
-    );
+        public function cancelRegistration(
+            string $userId,
+            string $workshopId
+        ): array {
+            $existing = $this->registrations->findByUserAndWorkshop(
+                $userId,
+                $workshopId
+            );
 
-    if (!$existing || $existing["status"] !== "confirmed") {
-        return [
-            "status" => 404,
-            "message" => "No active registration found."
-        ];
-    }
+            if (!$existing || $existing["status"] !== "confirmed") {
+                return [
+                    "status" => 404,
+                    "message" => "No active registration found."
+                ];
+            }
 
-    $this->registrations->cancel($existing["id"]);
+            $this->registrations->cancel($existing["id"]);
 
-    return [
-        "status" => 200,
-        "message" => "Your registration has been cancelled."
-    ];
-}
-}
+            return [
+                "status" => 200,
+                "message" => "Your registration has been cancelled."
+            ];
+        }
+        }

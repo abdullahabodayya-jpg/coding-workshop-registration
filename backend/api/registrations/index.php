@@ -19,7 +19,7 @@ if (!in_array($method, ["GET", "POST"], true)) {
     exit;
 }
 
-// Authentication check
+
 if (empty($_SESSION["user_id"])) {
     http_response_code(401);
     echo json_encode([
@@ -29,7 +29,7 @@ if (empty($_SESSION["user_id"])) {
     exit;
 }
 
-// GET reads from the URL; POST reads from JSON.
+
 if ($method === "GET") {
     $workshopId = trim((string) ($_GET["workshop_id"] ?? ""));
 } else {

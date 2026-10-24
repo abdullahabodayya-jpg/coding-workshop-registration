@@ -55,7 +55,6 @@ try {
         ]);
     }
 
-    // Update the session name in case the user changed their name.
     $_SESSION["user_name"] =
         $result["data"]["first_name"] . " " .
         $result["data"]["last_name"];
