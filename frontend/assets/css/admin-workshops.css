@@ -1,0 +1,452 @@
+/* =========================================================
+   ATHAR — Admin Workshops
+   File: frontend/assets/css/admin-workshops.css
+   Uses shared styles from admin.css
+   ========================================================= */
+
+/* ---------- 1. Page ---------- */
+
+.workshops-admin-page {
+    min-height: 100vh;
+    margin: 0;
+    background: var(--background, #F6F7FB);
+    color: var(--text, #25283B);
+    font-family: "DM Sans", Arial, Helvetica, sans-serif;
+
+    /* Page-specific aliases mapped to admin.css tokens */
+    --primary-light: var(--primary-soft, #F0F4FF);
+    --white: var(--surface, #FFFFFF);
+    --coffee: var(--brown, #6F4E37);
+    --coffee-dark: #5E4535;
+    --lavender-light: #DDD3E7;
+}
+
+.workshops-admin-page h1,
+.workshops-admin-page h2,
+.workshops-admin-page h3 {
+    font-family: "Manrope", Arial, sans-serif;
+}
+
+/* ---------- 2. Main Layout ---------- */
+
+.workshops-main {
+    width: min(1400px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 40px 0 60px;
+}
+
+.workshops-main .page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.workshops-main .page-heading h1 {
+    margin: 6px 0;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.2;
+}
+
+.workshops-main .page-heading p:not(.eyebrow) {
+    margin-bottom: 0;
+    color: var(--muted, #73788A);
+}
+
+.workshops-admin-page .eyebrow {
+    margin: 0;
+    color: var(--primary-dark, #5576C0);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+/* ---------- 3. Buttons ---------- */
+
+.workshops-admin-page .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 16px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: var(--primary, #6F8FD6);
+    color: #FFFFFF;
+    font: inherit;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.workshops-admin-page .button:hover {
+    background: var(--primary-dark, #5576C0);
+}
+
+.workshops-admin-page .button:focus-visible {
+    outline: 3px solid rgb(111 143 214 / 35%);
+    outline-offset: 3px;
+}
+
+.workshops-admin-page .button-light {
+    background: var(--lavender, #E6E0F0);
+    color: var(--brown, #6F4E37);
+    border-color: transparent;
+}
+
+.workshops-admin-page .button-light:hover {
+    background: #DCD3EC;
+}
+
+.workshops-admin-page .button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ---------- 4. Statistics ---------- */
+
+.workshop-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 26px;
+}
+
+.workshop-stat,
+.workshop-panel {
+    min-width: 0;
+    border: 1px solid var(--border, #E6E8F0);
+    border-radius: var(--radius-lg, 14px);
+    background: var(--surface, #FFFFFF);
+    box-shadow: var(--shadow-sm, 0 4px 16px rgb(30 40 80 / 4%));
+}
+
+.workshop-stat {
+    padding: 22px;
+}
+
+.workshop-stat span {
+    display: block;
+    color: var(--muted, #73788A);
+    font-size: 0.88rem;
+}
+
+.workshop-stat strong {
+    display: block;
+    margin-top: 10px;
+    color: var(--brown, #6F4E37);
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+}
+
+/* ---------- 5. Workshop Panel & Toolbar ---------- */
+
+.workshop-panel {
+    padding: 22px;
+}
+
+.workshop-toolbar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.workshop-toolbar input,
+.workshop-toolbar select,
+.edit-dialog input,
+.edit-dialog select,
+.edit-dialog textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid var(--border, #E6E8F0);
+    border-radius: var(--radius-sm, 8px);
+    background: var(--surface, #FFFFFF);
+    color: var(--text, #25283B);
+    font: inherit;
+}
+
+.workshop-toolbar input:focus,
+.workshop-toolbar select:focus,
+.edit-dialog input:focus,
+.edit-dialog select:focus,
+.edit-dialog textarea:focus {
+    border-color: var(--primary, #6F8FD6);
+    outline: 3px solid rgb(111 143 214 / 15%);
+}
+
+.workshop-toolbar .search-field {
+    flex: 1;
+}
+
+/* ---------- 6. Workshop List & Cards ---------- */
+
+.workshops-list {
+    display: grid;
+    gap: 12px;
+}
+
+.workshop-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid var(--border, #E6E8F0);
+    border-radius: 13px;
+    background: var(--surface, #FFFFFF);
+    transition: border-color 0.2s ease;
+}
+
+.workshop-card:hover {
+    border-color: #C8D4F0;
+}
+
+.workshop-image {
+    width: 100px;
+    height: 90px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 10px;
+    background: var(--primary-soft, #F0F4FF);
+}
+
+.workshop-card-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.workshop-card h3 {
+    margin: 0 0 7px;
+    font-size: 1rem;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.workshop-meta {
+    color: var(--muted, #73788A);
+    font-size: 0.83rem;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.workshop-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* ---------- 7. Status Badges ---------- */
+
+.workshops-admin-page .status-badge {
+    display: inline-block;
+    flex-shrink: 0;
+    padding: 5px 9px;
+    border-radius: 8px;
+    background: var(--platinum, #E5E4E2);
+    color: var(--brown, #6F4E37);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.workshops-admin-page .status-published {
+    background: var(--success-soft, #DFF4E8);
+    color: var(--success, #267A56);
+}
+
+.workshops-admin-page .status-draft {
+    background: var(--lavender, #E6E0F0);
+    color: #66528D;
+}
+
+.workshops-admin-page .status-completed {
+    background: var(--primary-soft, #F0F4FF);
+    color: var(--primary-dark, #5576C0);
+}
+
+.workshops-admin-page .status-cancelled {
+    background: var(--danger-soft, #FCE8E8);
+    color: var(--danger, #B84040);
+}
+
+/* ---------- 8. Danger Actions ---------- */
+
+.workshops-admin-page .danger-button {
+    border-color: #E8C9C9 !important;
+    background: var(--surface, #FFFFFF);
+    color: var(--danger, #B84040) !important;
+}
+
+.workshops-admin-page .danger-button:hover {
+    background: var(--danger-soft, #FCE8E8);
+}
+
+/* ---------- 9. Messages ---------- */
+
+#workshopsMessage,
+#editMessage {
+    color: var(--muted, #73788A);
+    font-size: 0.9rem;
+}
+
+#workshopsMessage.error,
+#editMessage.error {
+    color: var(--danger, #B84040);
+}
+
+/* ---------- 10. Edit Dialog ---------- */
+
+.workshops-admin-page .edit-dialog {
+    width: min(650px, calc(100% - 32px));
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 24px;
+    border: 1px solid var(--border, #E6E8F0);
+    border-radius: var(--radius-lg, 14px);
+    background: var(--surface, #FFFFFF);
+    color: var(--text, #25283B);
+    box-shadow: var(--shadow-md, 0 8px 24px rgb(30 40 80 / 7%));
+}
+
+.edit-dialog::backdrop {
+    background: rgb(35 39 50 / 45%);
+    backdrop-filter: blur(3px);
+}
+
+.edit-dialog form {
+    display: grid;
+    gap: 15px;
+}
+
+.dialog-heading,
+.dialog-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.dialog-heading h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.edit-dialog label {
+    display: grid;
+    gap: 7px;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.close-button {
+    border: 0;
+    background: transparent;
+    color: var(--muted, #73788A);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: var(--text, #25283B);
+}
+
+/* ---------- 11. Accessibility ---------- */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ---------- 12. Responsive ---------- */
+
+@media (max-width: 900px) {
+    .workshop-card {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .workshop-actions {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .workshops-main {
+        width: calc(100% - 28px);
+        padding-top: 26px;
+        padding-bottom: 36px;
+    }
+
+    .workshops-main .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .workshops-main .page-heading .button {
+        width: 100%;
+    }
+
+    .workshop-stats {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .workshop-stat {
+        padding: 16px;
+    }
+
+    .workshop-stat strong {
+        font-size: 1.6rem;
+    }
+
+    .workshop-panel {
+        padding: 15px;
+    }
+
+    .workshop-toolbar {
+        flex-direction: column;
+    }
+
+    .workshop-image {
+        width: 76px;
+        height: 76px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dialog-heading,
+    .dialog-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .edit-dialog {
+        padding: 18px;
+    }
+}

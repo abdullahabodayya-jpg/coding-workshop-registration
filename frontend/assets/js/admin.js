@@ -6,30 +6,35 @@ const DASHBOARD_API = `${API_BASE}/admin/dashboard.php`;
 const chartInstances = {};
 
 const chartColors = {
-    coffee: "#80604A",
-    coffeeDark: "#5E4535",
-    sage: "#8DAA91",
-    sageDark: "#607F68",
-    lavender: "#B9A7CC",
-    lavenderLight: "#DDD3E7",
-    rose: "#C98F91",
-    platinum: "#E5E4E2",
-    cream: "#F4EFE8",
-    muted: "#77736F",
-    border: "#E9E3DC",
-    white: "#FFFFFF",
-    text: "#292B33"
+coffee: "#80604A",
+coffeeDark: "#5E4535",
+coffeeLight: "#B99A80",
+coffeePale: "#E8D9CC",
+
+sage: "#8DAA91",
+sageDark: "#607F68",
+lavender: "#B9A7CC",
+lavenderLight: "#DDD3E7",
+rose: "#C98F91",
+
+platinum: "#E5E4E2",
+cream: "#F4EFE8",
+muted: "#77736F",
+border: "#E9E3DC",
+white: "#FFFFFF",
+text: "#292B33"
+
 };
 
 const palette = [
-    chartColors.coffee,
-    chartColors.sage,
-    chartColors.lavender,
-    chartColors.rose,
-    chartColors.sageDark,
-    chartColors.platinum,
-    chartColors.coffeeDark,
-    chartColors.lavenderLight
+"#5E4535",
+"#80604A",
+"#A58268",
+"#B99A80",
+"#8DAA91",
+"#607F68",
+"#B9A7CC",
+"#C98F91"
 ];
 
 const numberFormatter = new Intl.NumberFormat();
@@ -118,8 +123,8 @@ function renderGenderChart(gender = {}) {
             datasets: [{
                 data: [male, female],
                 backgroundColor: [
-                    chartColors.sage,
-                    chartColors.lavender
+                    chartColors.coffeeDark,
+                    chartColors.coffeeLight 
                 ],
                 borderColor: chartColors.white,
                 borderWidth: 5,
@@ -159,9 +164,9 @@ function renderWorkshopStatusChart(statuses = {}) {
                 ),
                 backgroundColor: [
                     chartColors.platinum,
-                    chartColors.sage,
-                    chartColors.coffee,
-                    chartColors.rose
+                    chartColors.sage, 
+                    chartColors.coffee,   
+                    chartColors.rose   
                 ],
                 borderColor: chartColors.white,
                 borderWidth: 4,

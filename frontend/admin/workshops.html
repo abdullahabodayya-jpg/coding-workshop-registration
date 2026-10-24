@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATHAR | Manage Workshops</title>
+
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../assets/css/admin-workshops.css">
+
+    <script src="../assets/js/admin-auth.js" defer></script>
+    <script src="../assets/js/admin-workshops.js" defer></script>
+</head>
+
+<body class="workshops-admin-page" hidden>
+    <header class="admin-header">
+        <a class="brand" href="dashboard.html" aria-label="ATHAR Admin Home">
+            <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="12" fill="#6F4E37"/>
+                    <path d="M20 8L30 30H24.5L20 19.2L15.5 30H10L20 8Z"
+                          fill="#FFFFFF"/>
+                    <circle cx="20" cy="30" r="2" fill="#B9A7CC"/>
+                </svg>
+            </span>
+            <span class="brand-copy">
+                <span class="brand-name">ATHAR</span>
+                <span class="brand-label">ADMIN PANEL</span>
+            </span>
+        </a>
+
+        <nav class="admin-nav" aria-label="Admin navigation">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="create-workshop.html">Add workshop</a>
+            <a class="active" href="workshops.html">Workshops</a>
+            <a href="users.html">Users</a>
+            <a href="support.html">Support inbox</a>
+        </nav>
+
+        <button id="logoutBtn" class="button button-light" type="button">
+            Log out
+        </button>
+    </header>
+
+    <main class="workshops-main">
+        <section class="page-heading">
+            <div>
+                <p class="eyebrow">WORKSHOP MANAGEMENT</p>
+                <h1>Manage workshops</h1>
+                <p>View, update and manage ATHAR workshops.</p>
+            </div>
+
+            <a class="button" href="create-workshop.html">+ Add workshop</a>
+        </section>
+
+        <section class="workshop-stats">
+            <article class="workshop-stat">
+                <span>All workshops</span>
+                <strong id="allCount">0</strong>
+            </article>
+            <article class="workshop-stat">
+                <span>Published</span>
+                <strong id="publishedCount">0</strong>
+            </article>
+            <article class="workshop-stat">
+                <span>Drafts</span>
+                <strong id="draftCount">0</strong>
+            </article>
+        </section>
+
+        <section class="workshop-panel">
+            <div class="workshop-toolbar">
+                <label class="search-field">
+                    <span class="sr-only">Search workshops</span>
+                    <input id="searchInput" type="search"
+                           placeholder="Search by title or location...">
+                </label>
+
+                <label>
+                    <span class="sr-only">Filter by status</span>
+                    <select id="statusFilter">
+                        <option value="">All statuses</option>
+                        <option value="draft">Draft</option>
+                        <option value="published">Published</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </label>
+
+                <button id="refreshWorkshops" class="button button-light"
+                        type="button">Refresh</button>
+            </div>
+
+            <p id="workshopsMessage" role="status" aria-live="polite"></p>
+
+            <div id="workshopsList" class="workshops-list"></div>
+        </section>
+
+        <dialog id="editDialog" class="edit-dialog">
+            <form id="editForm">
+                <div class="dialog-heading">
+                    <div>
+                        <p class="eyebrow">WORKSHOP DETAILS</p>
+                        <h2>Edit workshop</h2>
+                    </div>
+                    <button id="closeDialog" class="close-button"
+                            type="button" aria-label="Close">×</button>
+                </div>
+
+                <input id="editId" type="hidden">
+
+                <label>
+                    Title
+                    <input id="editTitle" maxlength="200" required>
+                </label>
+
+                <label>
+                    Description
+                    <textarea id="editDescription" rows="5" required></textarea>
+                </label>
+
+                <div class="form-grid">
+                    <label>
+                        Type
+                        <select id="editType" required>
+                            <option value="online">Online</option>
+                            <option value="in_person">In person</option>
+                            <option value="hybrid">Hybrid</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Status
+                        <select id="editStatus" required>
+                            <option value="draft">Draft</option>
+                            <option value="published">Published</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </label>
+                </div>
+
+                <label>
+                    Location
+                    <input id="editLocation" maxlength="255">
+                </label>
+
+                <label>
+                    Image URL
+                    <input id="editImageUrl" type="url">
+                </label>
+
+                <div class="form-grid">
+                    <label>
+                        Start date and time
+                        <input id="editStartAt" type="datetime-local" required>
+                    </label>
+                    <label>
+                        End date and time
+                        <input id="editEndAt" type="datetime-local" required>
+                    </label>
+                </div>
+
+                <label>
+                    Capacity
+                    <input id="editCapacity" type="number" min="1" required>
+                </label>
+
+                <p id="editMessage" role="status" aria-live="polite"></p>
+
+                <div class="dialog-actions">
+                    <button id="cancelEdit" class="button button-light"
+                            type="button">Cancel</button>
+                    <button id="saveWorkshop" class="button"
+                            type="submit">Save changes</button>
+                </div>
+            </form>
+        </dialog>
+    </main>
+</body>
+</html>

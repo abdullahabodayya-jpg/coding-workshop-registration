@@ -1,19 +1,48 @@
+/* =========================================================
+   ATHAR — Admin Shared Styles
+   File: frontend/assets/css/admin.css
+   ========================================================= */
+
+/* ---------- 1. Design Tokens ---------- */
+
 :root {
     --primary: #6F8FD6;
+    --primary-dark: #5576C0;
+    --primary-soft: #F0F4FF;
+
     --platinum: #E5E4E2;
     --lavender: #E6E0F0;
     --brown: #6F4E37;
+
     --text: #25283B;
     --muted: #73788A;
+
     --surface: #FFFFFF;
     --background: #F6F7FB;
     --border: #E6E8F0;
+
     --success: #267A56;
+    --success-soft: #DFF4E8;
+
     --warning: #9A6B18;
+    --warning-soft: #FFF1D6;
+
     --danger: #B84040;
+    --danger-soft: #FCE8E8;
+
+    --shadow-sm: 0 4px 16px rgb(30 40 80 / 4%);
+    --shadow-md: 0 8px 24px rgb(30 40 80 / 7%);
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 14px;
 }
 
-* {
+/* ---------- 2. Reset & Base ---------- */
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -21,60 +50,232 @@ body {
     margin: 0;
     color: var(--text);
     background: var(--background);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "DM Sans", Arial, Helvetica, sans-serif;
     line-height: 1.5;
 }
 
-button, input, textarea, select {
+button,
+input,
+textarea,
+select {
     font: inherit;
 }
 
-button, select {
+button,
+select {
     cursor: pointer;
 }
 
-.admin-header {
-    min-height: 76px;
-    padding: 16px 5%;
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
-.brand {
-    color: var(--primary);
+a {
+    color: inherit;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* ---------- 3. Admin Header & Brand ---------- */
+
+.admin-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    min-height: 76px;
+    padding: 12px clamp(18px, 4vw, 56px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.admin-header .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    flex-shrink: 0;
+
+    color: var(--primary-dark);
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: 1.2rem;
     font-weight: 800;
-    font-size: 1.35rem;
+    font-style: normal;
     text-decoration: none;
+    letter-spacing: 0;
+}
+
+.admin-header .brand span {
+    display: block;
+}
+
+.admin-header .brand-mark,
+.admin-header .brand-mark svg {
+    display: block;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+}
+
+.admin-header .brand-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.admin-header .brand-name {
+    display: block;
+    color: var(--primary-dark);
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    font-style: normal;
+    line-height: 1.15;
     letter-spacing: 1px;
 }
 
-.brand span {
+.admin-header .brand-label {
     display: block;
     color: var(--muted);
-    font-size: 0.65rem;
-    letter-spacing: 3px;
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 0.61rem;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 1.7px;
+    line-height: 1.4;
+}
+
+/* ---------- 4. Admin Navigation ---------- */
+
+.admin-header nav,
+.admin-header .admin-nav {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+    min-width: 0;
 }
 
 .admin-header nav {
-    display: flex;
-    gap: 20px;
-    flex: 1;
+    justify-content: center;
 }
 
-.admin-header nav a {
+.admin-header nav a,
+.admin-header .admin-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 9px 12px;
+
+    border-radius: var(--radius-sm);
     color: var(--muted);
+
+    font-size: 0.84rem;
+    font-weight: 600;
     text-decoration: none;
-    font-size: 0.95rem;
+    white-space: nowrap;
+
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
+.admin-header nav a:hover,
 .admin-header nav a.active,
-.admin-header nav a:hover {
-    color: var(--primary);
-    font-weight: 700;
+.admin-header .admin-nav a:hover,
+.admin-header .admin-nav a.active {
+    background: var(--primary-soft);
+    color: var(--primary-dark);
 }
+
+/* ---------- 5. Buttons ---------- */
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    border: 1px solid transparent;
+    border-radius: 9px;
+    padding: 11px 16px;
+
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.button:hover {
+    opacity: 0.9;
+}
+
+.button:focus-visible,
+.admin-header a:focus-visible,
+.admin-header button:focus-visible {
+    outline: 3px solid rgb(111 143 214 / 35%);
+    outline-offset: 3px;
+}
+
+.button-primary {
+    color: #FFFFFF;
+    background: var(--primary);
+}
+
+.button-primary:hover {
+    background: var(--primary-dark);
+    opacity: 1;
+}
+
+.button-light {
+    color: var(--brown);
+    background: var(--lavender);
+    border-color: transparent;
+}
+
+.button-light:hover {
+    background: #DCD3EC;
+    opacity: 1;
+}
+
+/* Keep the existing logout button ID for JavaScript. */
+
+.admin-header #logoutBtn {
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 10px 15px;
+
+    background: var(--primary-soft);
+    color: var(--primary-dark);
+
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.admin-header #logoutBtn:hover {
+    background: var(--lavender);
+    border-color: #D5D9EA;
+}
+
+/* ---------- 6. Main Layout & Page Heading ---------- */
 
 .admin-main {
     width: min(1440px, 92%);
@@ -91,48 +292,26 @@ button, select {
 
 .page-heading h1 {
     margin: 4px 0;
+    font-family: "Manrope", Arial, sans-serif;
     font-size: clamp(1.8rem, 3vw, 2.4rem);
+    line-height: 1.2;
 }
 
 .page-heading p:not(.eyebrow) {
-    color: var(--muted);
     margin-bottom: 0;
+    color: var(--muted);
 }
 
 .eyebrow {
     margin: 0;
-    color: var(--primary);
+    color: var(--primary-dark);
     font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 1.8px;
+    text-transform: uppercase;
 }
 
-.button {
-    border: 0;
-    border-radius: 9px;
-    padding: 11px 16px;
-    font-weight: 700;
-    transition: opacity 0.2s ease;
-}
-
-.button:hover {
-    opacity: 0.86;
-}
-
-.button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-.button-primary {
-    color: white;
-    background: var(--primary);
-}
-
-.button-light {
-    color: var(--brown);
-    background: var(--lavender);
-}
+/* ---------- 7. Statistics Cards ---------- */
 
 .stats-grid {
     display: grid;
@@ -141,11 +320,13 @@ button, select {
     margin-bottom: 26px;
 }
 
-.stat-card, .panel {
+.stat-card,
+.panel {
+    min-width: 0;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    box-shadow: 0 4px 16px rgb(30 40 80 / 4%);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
 }
 
 .stat-card {
@@ -161,19 +342,16 @@ button, select {
 .stat-card strong {
     display: block;
     margin-top: 8px;
+    font-family: "Manrope", Arial, sans-serif;
     font-size: 2rem;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
 }
 
-.inbox-layout {
-    display: grid;
-    grid-template-columns: minmax(300px, 0.85fr) minmax(0, 1.4fr);
-    align-items: start;
-    gap: 22px;
-}
+/* ---------- 8. General Panels ---------- */
 
 .panel {
     padding: 22px;
-    min-width: 0;
 }
 
 .panel-heading {
@@ -186,26 +364,58 @@ button, select {
 
 .panel-heading h2 {
     margin: 0 auto 0 0;
+    font-family: "Manrope", Arial, sans-serif;
     font-size: 1.15rem;
 }
+
+/* ---------- 9. Form Controls ---------- */
 
 .filter-label {
     color: var(--muted);
     font-size: 0.85rem;
 }
 
-select, textarea {
+input,
+select,
+textarea {
+    max-width: 100%;
+}
+
+select,
+textarea {
     width: 100%;
     border: 1px solid var(--border);
-    border-radius: 8px;
-    background: white;
-    color: var(--text);
+    border-radius: var(--radius-sm);
     padding: 10px 12px;
+
+    background: var(--surface);
+    color: var(--text);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary);
+    outline: 3px solid rgb(111 143 214 / 15%);
 }
 
 .panel-heading select {
     width: auto;
     max-width: 160px;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* ---------- 10. Support Inbox Layout ---------- */
+
+.inbox-layout {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.85fr) minmax(0, 1.4fr);
+    align-items: start;
+    gap: 22px;
 }
 
 .message-list {
@@ -217,21 +427,31 @@ select, textarea {
     width: 100%;
     padding: 15px;
     text-align: left;
-    background: white;
+
+    background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 10px;
     color: var(--text);
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .message-item:hover,
 .message-item.selected {
     border-color: var(--primary);
-    background: #F6F8FF;
+    background: var(--primary-soft);
+}
+
+.message-item.selected {
+    box-shadow: inset 3px 0 0 var(--primary);
 }
 
 .message-item-top {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 8px;
 }
@@ -251,19 +471,23 @@ select, textarea {
     font-size: 0.78rem;
 }
 
+/* ---------- 11. Status Badges ---------- */
+
 .status-badge {
     display: inline-block;
     flex-shrink: 0;
     padding: 4px 8px;
     border-radius: 20px;
+
     background: var(--platinum);
     color: var(--brown);
+
     font-size: 0.72rem;
     font-weight: 700;
 }
 
 .status-badge.open {
-    background: #FFF1D6;
+    background: var(--warning-soft);
     color: var(--warning);
 }
 
@@ -273,14 +497,16 @@ select, textarea {
 }
 
 .status-badge.resolved {
-    background: #DFF4E8;
+    background: var(--success-soft);
     color: var(--success);
 }
+
+/* ---------- 12. Support Message Details ---------- */
 
 .detail-top {
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: flex-start;
     gap: 12px;
 }
 
@@ -294,6 +520,7 @@ select, textarea {
     gap: 12px;
     padding: 18px 0;
     margin: 18px 0;
+
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
 }
@@ -309,15 +536,18 @@ select, textarea {
 }
 
 .sender-details dd {
+    min-width: 0;
     margin: 0;
     overflow-wrap: anywhere;
 }
 
 .original-message {
     padding: 16px;
-    background: var(--background);
-    border-radius: 10px;
     margin-bottom: 22px;
+
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 10px;
 }
 
 .original-message h3 {
@@ -331,6 +561,8 @@ select, textarea {
     overflow-wrap: anywhere;
 }
 
+/* ---------- 13. Reply Form ---------- */
+
 #replyForm {
     display: grid;
     gap: 10px;
@@ -338,16 +570,12 @@ select, textarea {
 
 #replyForm label {
     margin-top: 6px;
-    font-weight: 700;
     font-size: 0.9rem;
+    font-weight: 700;
 }
 
-textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.form-hint, .notice {
+.form-hint,
+.notice {
     color: var(--muted);
     font-size: 0.85rem;
 }
@@ -364,6 +592,8 @@ textarea {
     color: var(--success);
 }
 
+/* ---------- 14. Empty States ---------- */
+
 .empty-state {
     padding: 50px 12px;
     text-align: center;
@@ -376,17 +606,31 @@ textarea {
 
 .empty-icon {
     display: block;
-    font-size: 2.4rem;
     color: var(--primary);
+    font-size: 2.4rem;
 }
 
-[hidden] {
-    display: none !important;
+/* ---------- 15. Responsive Layout ---------- */
+
+@media (max-width: 1000px) {
+    .admin-header {
+        flex-wrap: wrap;
+        gap: 12px 18px;
+    }
+
+    .admin-header nav,
+    .admin-header .admin-nav {
+        order: 3;
+        flex-basis: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 2px;
+    }
 }
 
 @media (max-width: 900px) {
     .inbox-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .stats-grid {
@@ -396,14 +640,28 @@ textarea {
 
 @media (max-width: 560px) {
     .admin-header {
-        flex-wrap: wrap;
-        gap: 16px;
+        padding: 12px 14px;
     }
 
-    .admin-header nav {
-        order: 3;
-        width: 100%;
-        flex-basis: 100%;
+    .admin-header .brand-mark,
+    .admin-header .brand-mark svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    .admin-header .brand-name {
+        font-size: 1.05rem;
+    }
+
+    .admin-header nav a,
+    .admin-header .admin-nav a {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+
+    .admin-main {
+        width: calc(100% - 28px);
+        margin: 24px auto;
     }
 
     .page-heading {
@@ -419,148 +677,21 @@ textarea {
         gap: 10px;
     }
 
-    .stat-card, .panel {
+    .stat-card,
+    .panel {
         padding: 15px;
     }
 
     .stat-card strong {
         font-size: 1.6rem;
     }
-}
 
-/* Shared ATHAR admin identity and navigation */
-
-.admin-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    min-height: 76px;
-    padding: 12px clamp(18px, 4vw, 56px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    background: #FFFFFF;
-    border-bottom: 1px solid #E9E3DC;
-    box-shadow: 0 4px 18px rgba(94, 69, 53, 0.035);
-}
-
-.admin-header .brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 11px;
-    flex-shrink: 0;
-    color: #5E4535;
-    text-decoration: none;
-    letter-spacing: 0;
-}
-
-.brand-mark,
-.brand-mark svg {
-    display: block;
-    width: 42px;
-    height: 42px;
-    flex-shrink: 0;
-}
-
-.admin-header .brand-copy {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-}
-
-.admin-header .brand-name {
-    display: block;
-    color: #5E4535;
-    font-family: "Manrope", sans-serif;
-    font-size: 1.2rem;
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: 1px;
-}
-
-.admin-header .brand-label {
-    display: block;
-    color: #89837D;
-    font-size: 0.61rem;
-    font-weight: 700;
-    letter-spacing: 1.7px;
-    line-height: 1.4;
-}
-
-.admin-header .admin-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    flex: 1;
-    min-width: 0;
-}
-
-.admin-header .admin-nav a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 40px;
-    padding: 9px 12px;
-    border-radius: 9px;
-    color: #77736F;
-    font-size: 0.84rem;
-    font-weight: 600;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: background 0.2s ease, color 0.2s ease;
-}
-
-.admin-header .admin-nav a:hover,
-.admin-header .admin-nav a.active {
-    background: #F4EFE8;
-    color: #5E4535;
-}
-
-.admin-header .button-light {
-    flex-shrink: 0;
-    border: 1px solid #E9E3DC;
-    background: #F4EFE8;
-    color: #5E4535;
-}
-
-.admin-header .button-light:hover {
-    background: #EDE4DA;
-    opacity: 1;
-}
-
-@media (max-width: 1000px) {
-    .admin-header {
-        flex-wrap: wrap;
-        gap: 12px 18px;
+    .sender-details div {
+        grid-template-columns: 1fr;
+        gap: 2px;
     }
 
-    .admin-header .admin-nav {
-        order: 3;
-        flex-basis: 100%;
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-bottom: 2px;
-    }
-}
-
-@media (max-width: 560px) {
-    .admin-header {
-        padding: 12px 14px;
-    }
-
-    .brand-mark,
-    .brand-mark svg {
-        width: 36px;
-        height: 36px;
-    }
-
-    .admin-header .brand-name {
-        font-size: 1.05rem;
-    }
-
-    .admin-header .admin-nav a {
-        padding: 8px 10px;
-        font-size: 0.8rem;
+    .detail-top {
+        flex-direction: column;
     }
 }
